@@ -312,7 +312,7 @@ class ResturantOrderController extends Controller
               }
              if($email->app ==1){
                   $notification_title = "WooHoo! Your Order is Placed";
-                $notification_text = "Order Successfully Placed: Your order id #".$cart_id." contains of " .$prod_name." of price rs ".$price2. " is placed Successfully.You can expect your item(s) will be delivered on ".$delivery_date." between ".$time_slot.".";
+                $notification_text = "Order Successfully Placed: Your order id #".$cart_id." contains of " .$prod_name." of price bdt ".$price2. " is placed Successfully.You can expect your item(s) will be delivered on ".$delivery_date." between ".$time_slot.".";
                 
                 $date = date('d-m-Y');
         
@@ -379,7 +379,7 @@ class ResturantOrderController extends Controller
                 ///////send notification to vendor//////
               
                 $notification_title = "WooHoo ! You Got a New Order";
-                $notification_text = "you got an order cart id #".$cart_id." contains of " .$prod_name." of price rs ".$price2. ". It will have to delivered on ".$delivery_date." between ".$time_slot.".";
+                $notification_text = "you got an order cart id #".$cart_id." contains of " .$prod_name." of price bdt ".$price2. ". It will have to delivered on ".$delivery_date." between ".$time_slot.".";
                 
                 $date = date('d-m-Y');
                 $getUser = DB::table('vendor')
@@ -512,7 +512,7 @@ class ResturantOrderController extends Controller
               }
             if($email->app == 1){
                   $notification_title = "WooHoo! Your Order is Placed";
-                $notification_text = "Order Successfully Placed: Your order id #".$cart_id." contains of " .$prod_name." of price rs ".$price2. " is placed Successfully.You can expect your item(s) will be delivered on ".$delivery_date." between ".$time_slot.".";
+                $notification_text = "Order Successfully Placed: Your order id #".$cart_id." contains of " .$prod_name." of price bdt ".$price2. " is placed Successfully.You can expect your item(s) will be delivered on ".$delivery_date." between ".$time_slot.".";
                 
                 $date = date('d-m-Y');
         
@@ -579,7 +579,7 @@ class ResturantOrderController extends Controller
               ///////send notification to vendor//////
               
                 $notification_title = "WooHoo ! You Got a New Order";
-                $notification_text = "you got an order cart id #".$cart_id." contains of " .$prod_name." of price rs ".$price2. ". It will have to delivered on ".$delivery_date." between ".$time_slot.".";
+                $notification_text = "you got an order cart id #".$cart_id." contains of " .$prod_name." of price bdt ".$price2. ". It will have to delivered on ".$delivery_date." between ".$time_slot.".";
                 
                 $date = date('d-m-Y');
                 $getUser = DB::table('vendor')

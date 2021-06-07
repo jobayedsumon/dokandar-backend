@@ -10,7 +10,7 @@ trait SendMail {
     
       public function payoutMail($vendor_name,$vendor_email,$app_name,$password) {
        
-        $data = array('to' => $vendor_email, 'from' => 'noreply@gomarket.in', 'to-name'=>$vendor_name, 'from-name' => $app_name);
+        $data = array('to' => $vendor_email, 'from' => 'noreply@dokandar.xyz', 'to-name'=>$vendor_name, 'from-name' => $app_name);
 
         Mail::send('cityadmin.mail.vendorcreate', compact('vendor_name', 'vendor_email','password'), function ($m) use ($data){
                 $m->from($data['from'], $data['from-name']);

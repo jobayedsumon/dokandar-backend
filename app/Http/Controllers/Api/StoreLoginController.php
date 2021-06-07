@@ -23,6 +23,7 @@ class StoreLoginController extends Controller
     	$checkUser = DB::table('vendor')
     					->where('vendor_phone', $phone)
     					->first();
+
         $smsby = DB::table('smsby')
               ->first();
         if($smsby->status==1){      

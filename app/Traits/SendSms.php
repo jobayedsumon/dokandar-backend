@@ -11,7 +11,7 @@ use Twilio\Rest\Client;
 trait SendSms {
     public function ordersuccessfull($cart_id,$prod_name,$price2,$delivery_date,$time_slot,$user_phone)
     {
-        $getInvitationMsg = "Order Successfully Placed: Your order id #".$cart_id." contains of " .$prod_name." of price rs ".$price2. " is placed Successfully.You can expect your item(s) will be delivered on ".$delivery_date." between ".$time_slot.".";
+        $getInvitationMsg = "Order Successfully Placed: Your order id #".$cart_id." contains of " .$prod_name." of price bdt ".$price2. " is placed Successfully.You can expect your item(s) will be delivered on ".$delivery_date." between ".$time_slot.".";
         $smsby =  DB::table('smsby')
                ->first();
     if($smsby->status==1){       

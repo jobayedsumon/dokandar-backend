@@ -1,5 +1,5 @@
 <meta charset="utf-8" />
-<title>TecManic | @yield('title')</title>
+<title>Dokandar | @yield('title')</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="@yield('metaDescription')" />
 <meta name="author" content="@yield('metaAuthor')" />

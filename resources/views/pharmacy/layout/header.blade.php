@@ -20,7 +20,7 @@
 				
 				<a href="#" class="brand-logo">
 					<!--<img src="{{url('assets/img/logo.png')}}" alt="" height="20" />-->
-					<label for="exampleInputName1">TecManic</label>
+					<label for="exampleInputName1">Dokandar</label>
 				</a>
 			</div>
 			<!-- END brand -->

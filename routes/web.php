@@ -1,5 +1,36 @@
 <?php
-
+//use Twilio\Rest\Client;
+//Route::get('/sms', function () {
+//    $twilio=DB::table('twilio')
+//        ->first();
+//
+//    $user_phone = '+8801677242853';
+//    $getInvitationMsg = 'Hello, this is a test message';
+//
+//    $twilsid = $twilio->twilio_sid;
+//    $twiltoken = $twilio->twilio_token;
+//    $twilphone = $twilio->twilio_phone;
+//    // send SMS
+//    // Your Account SID and Auth Token from twilio.com/console
+//    $sid = $twilsid;
+//    $token = $twiltoken;
+//    $client = new Client($sid, $token);
+//
+//    $user = $user_phone;
+//    // Use the client to do fun stuff like send text messages!
+//
+//    $client->messages->create(
+//    // the number you'd like to send the message to
+//        $user,
+//        array(
+//            // A Twilio phone number you purchased at twilio.com/console
+//            'from' => $twilphone,
+//            // the body of the text message you'd like to send
+//            'body' => $getInvitationMsg
+//
+//        )
+//    );
+//});
 
 //login
 Route::group(['namespace'=>'Admin', 'prefix'=>'admin'],function(){
