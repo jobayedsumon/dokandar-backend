@@ -144,7 +144,7 @@
                     @if($mapset->mapbox == 0 && $mapset->google_map == 1)
                      <div class="form-group">
                       <label for="autocomplete">Address</label>
-                      <input type="text" class="form-control" id="autocomplete" value="{{$city->city_name}}" name="cityadmin_address" placeholder="Enter Address">
+                      <input type="text" class="form-control" id="autocomplete" value="{{$city->city_name}}" name="city_name" placeholder="Enter Address">
                       
                     </div>
                    @endif
@@ -155,7 +155,7 @@
                       <div class="autocomplete" style="width:100%;">
                            <input id="lng" type="hidden" name="lng" value="{{$city->lng}}">
                               <input id="lat" type="hidden" name="lat" value="{{$city->lat}}">
-                            <input id="myInput" type="text" name="cityadmin_address" value="{{$city->city_name}}" placeholder="Place your Address">
+                            <input id="myInput" type="text" name="city_name" value="{{$city->city_name}}" placeholder="Place your Address">
                              
                         </div>
                     </div>

@@ -328,13 +328,13 @@ class StoreProductController extends Controller
         $product_image = 'product/images/'.$date.'/'.$fileName;
         
         $insert = DB::table('product')
-        ->insertGetId(['subcat_id'=>$subcat_id,'product_name'=>$product_name,'product_image'=>$user_image,'created_at'=>$created_at,'vendor_id'=>$vendor_id]);
+        ->insertGetId(['subcat_id'=>$subcat_id,'product_name'=>$product_name,'product_image'=>$product_image,'created_at'=>$created_at,'vendor_id'=>$vendor_id]);
                  
         
         if($insert){
          
          $add1stvarient = DB::table('product_varient')
-                        ->insert(['product_id'=>$insert,'price'=>$price, 'strick_price'=>$strick_price, 'varient_image'=>$user_image, 'unit'=>$unit, 'quantity'=>$quantity, 'stock'=>$stock,'description'=>$description,'vendor_id'=>$vendor_id]);
+                        ->insert(['product_id'=>$insert,'price'=>$price, 'strick_price'=>$strick_price, 'varient_image'=>$product_image, 'unit'=>$unit, 'quantity'=>$quantity, 'stock'=>$stock,'description'=>$description,'vendor_id'=>$vendor_id]);
                               
                      $mess = array('status'=>'1', 'message'=>'found data', 'data'=>$insert ,'datavarient'=>$add1stvarient);
                      return $mess;

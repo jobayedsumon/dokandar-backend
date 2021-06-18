@@ -35,7 +35,7 @@ class RedeemController extends Controller
         $reward_point = $request->reward_point;
         $value = $request->value;
     	 $insert = DB::table('reedem_values')
-                    ->update([
+                    ->updateOrInsert([
                         'reward_point'=>$reward_point,
                         'value'=>$value,
                         ]);

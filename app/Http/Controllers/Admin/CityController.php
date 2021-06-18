@@ -72,9 +72,15 @@ class CityController extends Controller
 
         if($mapset->mapbox == 0 && $mapset->google_map == 1){        
         $response = json_decode(file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=".$address1."&key=".$checkmap->map_api_key));
-        
-         $lat = $response->results[0]->geometry->location->lat;
-         $lng = $response->results[0]->geometry->location->lng;
+
+            if ($response && $response->results) {
+                $lat = $response->results[0]->geometry->location->lat;
+                $lng = $response->results[0]->geometry->location->lng;
+            } else {
+                $lat = $request->lat;
+                $lng = $request->lng;
+            }
+
         }
         else{
            $lat = $request->lat;
@@ -131,6 +137,8 @@ public function Updatecity(Request $request)
         $old_city_image = $request->old_city_image;
         $updated_at = date("d-m-y h:i a");
         $date=date('d-m-y');
+        $address = str_replace(" ", "+", $city_name);
+        $address1 = str_replace("-", "+", $address);
          
         $checkmap = DB::table('map_API')
                   ->first();
@@ -138,9 +146,14 @@ public function Updatecity(Request $request)
                 ->first();
                 if($mapset->mapbox == 0 && $mapset->google_map == 1){        
         $response = json_decode(file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=".$address1."&key=".$checkmap->map_api_key));
-        
-         $lat = $response->results[0]->geometry->location->lat;
-         $lng = $response->results[0]->geometry->location->lng;
+
+                    if ($response && $response->results) {
+                        $lat = $response->results[0]->geometry->location->lat;
+                        $lng = $response->results[0]->geometry->location->lng;
+                    } else {
+                        $lat = $request->lat;
+                        $lng = $request->lng;
+                    }
         }
         else{
            $lat = $request->lat;
@@ -151,12 +164,10 @@ public function Updatecity(Request $request)
             $request,
                 [
                     'city_name' => 'required',
-                    'city_pincode'=>'required',
                     'old_city_image'=>'required',
                 ],
                 [
                     'city_name.required' => 'Enter city name.',
-                    'city_pincode.required'=> 'Enter City Pincode',
                     'old_city_image.required' => 'choose picture.',
                 ]
         );

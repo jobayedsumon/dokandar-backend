@@ -26,12 +26,12 @@
                     <div class="form-group">
                       <label for="exampleInputName1">Reward points</label>
             
-                      <input type="text" class="form-control" name="reward_point"  value="{{$reedem->reward_point}}"  id="exampleInputName1" placeholder="Minimum Cart Value">
+                      <input type="text" class="form-control" name="reward_point"  value="{{$reedem ? $reedem->reward_point : ''}}"  id="exampleInputName1" placeholder="Minimum Cart Value">
                     </div>
                     
                     <div class="form-group">
                       <label for="exampleInputName1">Values</label>
-                      <input type="text" class="form-control" name="value"value="{{$reedem->value}}"   id="exampleInputName1" placeholder="Rewards Points">
+                      <input type="text" class="form-control" name="value"value="{{$reedem ? $reedem->value : ''}}"   id="exampleInputName1" placeholder="Rewards Points">
                     </div>
                   
                   
