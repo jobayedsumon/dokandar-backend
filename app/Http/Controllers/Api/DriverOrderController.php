@@ -110,7 +110,14 @@ use SendMail;
              ->join('user_address', 'orders.address_id','=','user_address.address_id')
              ->join('delivery_boy', 'orders.dboy_id', '=','delivery_boy.delivery_boy_id')
              ->select('orders.order_status','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone', 'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price','orders.payment_status','orders.payment_method','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone','orders.time_slot', 'vendor.vendor_loc as vendor_address', 'vendor.vendor_name','vendor.vendor_phone','vendor.lat as vendor_lat','vendor.lng as vendor_lng','user_address.lat as userlat', 'user_address.lng as userlng', 'delivery_boy.lat as dboy_lat', 'delivery_boy.lng as dboy_lng', 'user_address.user_number',  'user_address.houseno','user_address.pincode','user_address.houseno','user_address.street','user_address.state')
-             ->groupBy('orders.order_status','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone', 'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price','orders.payment_status','orders.payment_method','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone','orders.time_slot', 'vendor.vendor_loc as vendor_address', 'vendor.vendor_name','vendor.vendor_phone','vendor.lat as vendor_lat','vendor.lng as vendor_lng','user_address.lat as userlat', 'user_address.lng as userlng', 'delivery_boy.lat as dboy_lat', 'delivery_boy.lng as dboy_lng', 'user_address.user_number',  'user_address.houseno','user_address.pincode','user_address.houseno','user_address.street','user_address.state')
+             ->groupBy('orders.order_status', 'orders.order_id', 'orders.cart_id','tbl_user.user_name',
+                 'tbl_user.user_phone', 'orders.delivery_date', 'orders.total_price','orders.delivery_charge',
+                 'orders.rem_price','orders.payment_status','orders.payment_method','delivery_boy.delivery_boy_name',
+                 'delivery_boy.delivery_boy_phone','orders.time_slot', 'vendor.vendor_loc', 'vendor.vendor_name',
+                 'vendor.vendor_phone','vendor.lat','vendor.lng','user_address.lat', 'user_address.lng', 'delivery_boy.lat',
+                 'delivery_boy.lng', 'user_address.user_number',  'user_address.houseno','user_address.pincode','user_address.houseno',
+                 'user_address.street','user_address.state')
+
              ->where('orders.order_status','!=', 'completed')
              ->where('orders.order_status','!=', 'Cancelled')
              ->where('orders.vendor_id','!=',0)
@@ -130,7 +137,9 @@ use SendMail;
     	                ->join('product_varient', 'order_details.varient_id', '=', 'product_varient.varient_id')
     	                ->join('product','product_varient.product_id', '=', 'product.product_id')
     	                ->select('product.product_name','product_varient.price','product_varient.price','product_varient.unit','product_varient.quantity','product_varient.varient_image','product_varient.description','order_details.varient_id','order_details.store_order_id','order_details.qty', DB::raw('SUM(order_details.qty) as total_items'))
-    	               ->where('order_details.order_cart_id',$cart_id)
+    	                ->groupBy('product.product_name','product_varient.price','product_varient.price','product_varient.unit','product_varient.quantity','product_varient.varient_image','product_varient.description','order_details.varient_id','order_details.store_order_id','order_details.qty')
+
+                        ->where('order_details.order_cart_id',$cart_id)
     	               ->get();     
         
         $data[]=array('payment_method'=>$ords->payment_method, 'payment_status'=>$ords->payment_status,'user_address'=>$ords->houseno.','.$ords->street.','.$ords->pincode.','.$ords->state ,'order_status'=>$ords->order_status,'vendor_name'=>$ords->vendor_name, 'vendor_lat'=>$ords->vendor_lat, 'vendor_lng'=>$ords->vendor_lng, 'vendor_address'=>$ords->vendor_address, 'user_lat'=>$ords->userlat, 'user_lng'=>$ords->userlng, 'dboy_lat'=>$ords->dboy_lat, 'dboy_lng'=>$ords->dboy_lng, 'cart_id'=>$cart_id,'user_name'=>$ords->user_name, 'user_phone'=>$ords->user_phone, 'remaining_price'=>$ords->rem_price,'delivery_boy_name'=>$ords->delivery_boy_name,'delivery_boy_phone'=>$ords->delivery_boy_phone,'delivery_date'=>$ords->delivery_date,'time_slot'=>$ords->time_slot,'total_items'=>$details,'order_details'=>$description); 
