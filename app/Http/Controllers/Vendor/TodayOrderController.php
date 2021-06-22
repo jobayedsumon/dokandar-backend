@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Vendor;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -121,6 +122,7 @@ class TodayOrderController extends Controller
     	                     ->whereDate('orders.delivery_date', $end)
     	                    ->where('orders.vendor_id', $vendor_id)
     	                    ->orderBy('user_id')
+                            ->distinct()
     	                    ->get(); 
     	
     	  $details  =   DB::table('orders')
@@ -162,7 +164,7 @@ class TodayOrderController extends Controller
         }
         else{
             $boy_area_id='N/A';
-        } 
+        }
     	   
     	                    
          return view('vendor.oder_incentive.next_day_order', compact("vendor_email","details", "vendor","nextdayorder","delivery_boy","boy_area_id"));
@@ -268,20 +270,22 @@ public function complete_order(Request $request)
     	$delivery_boy = $request->delivery_boy_name;
     
     	$order_id = $request->order_id;
-    	 $update = DB::table('orders')
-    	          ->where('order_id',$order_id)
-    	          ->update(['dboy_id'=>$delivery_boy,
-    	          'order_status'=>"Confirmed"
-    	          ]);
-    	          
-               
-    	          
-    	  if($update){
-            return redirect()->back()->withErrors('Delivery boy assigned successfully');
-        }
-        else{
-            return redirect()->back()->withErrors("Something wents wrong");
-        }		
+
+
+
+          try {
+              $update = DB::table('orders')
+                  ->where('order_id',$order_id)
+                  ->update(['dboy_id'=>$delivery_boy,
+                      'order_status'=>"Confirmed"
+                  ]);
+          } catch (QueryException $queryException) {
+              die($queryException);
+          }
+
+          return redirect()->back()->withErrors('Delivery boy assigned successfully');
+
+
 	 }
 	else
 	 {
