@@ -25,6 +25,7 @@ class delivery_boyController extends Controller
         $delivery_boy= DB::table('delivery_boy')
         ->where('vendor_id', $vendor->vendor_id)
         ->get();
+        dd($delivery_boy);
         return view('vendor.delivery_boy.delivery_boy',compact("vendor_email","delivery_boy","vendor"));
      }
      else

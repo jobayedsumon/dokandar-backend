@@ -8,7 +8,7 @@ use DB;
 use Session;
 use Carbon\Carbon;
 
-class Today_OrderController extends Controller
+class TodayOrderController extends Controller
 {
     
    public function today_order_pharmacy(Request $request)
