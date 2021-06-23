@@ -24,8 +24,20 @@ use SendMail;
              ->join('vendor', 'orders.vendor_id', '=', 'vendor.vendor_id')
              ->join('user_address', 'orders.address_id','=','user_address.address_id')
              ->join('delivery_boy', 'orders.dboy_id', '=','delivery_boy.delivery_boy_id')
-             ->select('orders.order_status','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone', 'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price','orders.payment_status','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone','orders.time_slot', 'vendor.vendor_name','vendor.vendor_phone','vendor.lat as vendor_lat','vendor.lng as vendor_lng','user_address.lat as userlat', 'user_address.lng as userlng', 'delivery_boy.lat as dboy_lat', 'delivery_boy.lng as dboy_lng', 'user_address.user_number', 'user_address.houseno','user_address.state','user_address.street','user_address.pincode')
-             ->groupBy('orders.order_status','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone', 'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price','orders.payment_status','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone','orders.time_slot', 'vendor.vendor_name','vendor.vendor_phone','vendor.lat as vendor_lat','vendor.lng as vendor_lng','user_address.lat as userlat', 'user_address.lng as userlng', 'delivery_boy.lat as dboy_lat', 'delivery_boy.lng as dboy_lng', 'user_address.user_number', 'user_address.houseno','user_address.state','user_address.street','user_address.pincode')
+             ->select('orders.order_status','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone',
+                 'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price',
+                 'orders.payment_status','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone',
+                 'orders.time_slot', 'vendor.vendor_name','vendor.vendor_phone','vendor.lat as vendor_lat',
+                 'vendor.lng as vendor_lng','user_address.lat as userlat', 'user_address.lng as userlng',
+                 'delivery_boy.lat as dboy_lat', 'delivery_boy.lng as dboy_lng', 'user_address.user_number',
+                 'user_address.houseno','user_address.state','user_address.street','user_address.pincode')
+             ->groupBy('orders.order_status','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone',
+                 'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price',
+                 'orders.payment_status','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone',
+                 'orders.time_slot', 'vendor.vendor_name','vendor.vendor_phone','vendor.lat',
+                 'vendor.lng','user_address.lat', 'user_address.lng',
+                 'delivery_boy.lat', 'delivery_boy.lng', 'user_address.user_number',
+                 'user_address.houseno','user_address.state','user_address.street','user_address.pincode')
              ->where('orders.order_status' , 'completed')
              ->where('orders.ui_type' , '1')
              ->where('orders.dboy_id',$delivery_boy_id)
@@ -39,6 +51,7 @@ use SendMail;
     	                ->join('product_varient', 'order_details.varient_id', '=', 'product_varient.varient_id')
     	                ->join('product','product_varient.product_id', '=', 'product.product_id')
     	                ->select('product.product_name','product_varient.price','product_varient.price','product_varient.unit','product_varient.quantity','product_varient.varient_image','product_varient.description','order_details.varient_id','order_details.store_order_id','order_details.qty', DB::raw('SUM(order_details.qty) as total_items'))
+    	                ->groupBy('product.product_name','product_varient.price','product_varient.price','product_varient.unit','product_varient.quantity','product_varient.varient_image','product_varient.description','order_details.varient_id','order_details.store_order_id','order_details.qty')
     	               ->where('order_details.order_cart_id',$cart_id)
     	               ->get(); 
                   
