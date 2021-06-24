@@ -24,7 +24,7 @@ use SendMail;
              ->join('vendor', 'orders.vendor_id', '=', 'vendor.vendor_id')
              ->join('user_address', 'orders.address_id','=','user_address.address_id')
              ->join('delivery_boy', 'orders.dboy_id', '=','delivery_boy.delivery_boy_id')
-             ->join('order_details', 'orders.dboy_id', '=','delivery_boy.delivery_boy_id')
+             ->join('order_details', 'orders.cart_id', '=','order_details.order_cart_id')
              ->select('orders.order_status','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone',
                  'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price',
                  'orders.payment_status','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone',
