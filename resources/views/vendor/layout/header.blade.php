@@ -36,7 +36,7 @@
 						<div class="menu-item dropdown">
 					<a href="#" data-toggle="dropdown" data-display="static" class="menu-link">
 						<div class="menu-icon"><i class="fa fa-bell nav-icon"></i></div>
-						<a href="{{route('vendor-notification')}}">
+						
 
 						<div class="menu-label">
 						    						@include('vendor.unread')
