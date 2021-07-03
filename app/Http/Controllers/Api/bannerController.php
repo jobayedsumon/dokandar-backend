@@ -14,6 +14,7 @@ class bannerController extends Controller
     {   
         $vendor_id= $request->vendor_id;
         $banner = DB::table('banner')
+                    ->where('vendor_id', $vendor_id)
         		   ->get();
 
         if(count($banner)>0){
