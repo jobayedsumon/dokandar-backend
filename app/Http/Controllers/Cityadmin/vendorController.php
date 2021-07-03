@@ -147,9 +147,16 @@ class vendorController extends Controller
 
            if($mapset->mapbox == 0 && $mapset->google_map == 1){        
         $response = json_decode(file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=".$address1."&key=".$checkmap->map_api_key));
-        
-         $lat = $response->results[0]->geometry->location->lat;
-         $lng = $response->results[0]->geometry->location->lng;
+
+               if ($response && $response->results) {
+                   $lat = $response->results[0]->geometry->location->lat;
+                   $lng = $response->results[0]->geometry->location->lng;
+               } else {
+                   $lat = $request->lat;
+                   $lng = $request->lng;
+               }
+
+
         }
         else{
            $lat = $request->lat;
