@@ -193,7 +193,7 @@
     function autocompleteSuggestionMapBoxAPI(inputParams, callback) {
         geocodingClient.geocoding.forwardGeocode({
             query: inputParams,
-            countries: ['In'],
+            countries: ['Bd'],
             autocomplete: true,
             limit: 5,
         })
