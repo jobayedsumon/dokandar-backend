@@ -270,7 +270,8 @@ class vendorController extends Controller
         $vendor_category = DB::table('vendor_category')
                             ->where('vendor_category_id',$vendor_category_id)
                             ->first();
-        $ui_type =    $vendor_category->ui_type; 
+        $ui_type =    $vendor_category->ui_type;
+
 
         $checkmap = DB::table('map_API')
                   ->first();
@@ -455,10 +456,27 @@ class vendorController extends Controller
     	                   ->where('vendor_id',$id)
     	                   ->first();
 
+
     	if($checkcityadminLogin){
 
            session::put('vendor',$checkcityadminLogin->vendor_email);
-           return redirect()->route('vendor-index');
+
+           switch ($checkcityadminLogin->ui_type) {
+               case 1:
+                   return redirect()->route('vendor-index');
+                   break;
+               case 2:
+                   return redirect()->route('resturant-index');
+                   break;
+               case 3:
+                   return redirect()->route('pharmacy-index');
+                   break;
+               case 4:
+                   return redirect()->route('parcel-index');
+                   break;
+               default:
+                   return redirect()->route('vendor-index');
+           }
          
     	}else
          {
