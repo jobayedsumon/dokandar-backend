@@ -93,11 +93,18 @@ class areaController extends Controller
                   ->first();
          $mapset= DB::table('map_settings')
                 ->first();
-        
 
-        if($mapset->mapbox == 0 && $mapset->google_map == 1){        
-        $response = json_decode(file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=".$area_name."&key=".$checkmap->map_api_key));
-        
+
+        if($mapset->mapbox == 0 && $mapset->google_map == 1){
+            $url = "https://maps.googleapis.com/maps/api/geocode/json";
+            $query_array = array (
+                'address' => $area_name,
+                'key' => $checkmap->map_api_key,
+            );
+
+            $query = http_build_query($query_array);
+            $response = json_decode(file_get_contents($url . '?' . $query));
+
          $lat = $response->results[0]->geometry->location->lat;
          $lng = $response->results[0]->geometry->location->lng;
         }
