@@ -30,7 +30,7 @@ class CityController extends Controller
         $map = $map1->map_api_key;     
         $mapset = DB::table('map_settings')->first();
         $mapbox = DB::table('mapbox')->first();
-    	return view('parcel.city.Addcity',compact("admin_email","admin","map1","mapset","mapbox"));
+    	return view('parcel.city.Addcity',compact("admin_email","admin","map1","mapset","mapbox", "map"));
 
     }
     public function AddInsertcity(Request $request)

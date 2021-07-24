@@ -213,7 +213,7 @@
                     </div>
                      <div class="form-group">
                       <label for="exampleInputName1">vendor Phone</label>
-                      <input type="number" class="form-control" id="exampleInputName1" name="vendor_phone" placeholder="Enter Phone Number">
+                      <input type="text" class="form-control" id="exampleInputName1" name="vendor_phone" placeholder="Enter Phone Number">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputName1">Comission Per Order</label>
