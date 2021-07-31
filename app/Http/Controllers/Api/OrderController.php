@@ -446,15 +446,8 @@ class OrderController extends Controller
             'rem_price'=>$rem_amount,
             'payment_method'=>$payment_method,
             'payment_status'=>'success'
-            ]);  
-            $sms = DB::table('notificationby')
-                      ->select('sms')
-                      ->where('user_id',$user_id)
-                      ->first();
-            $sms_status = $sms->sms;
-                if($sms_status == 1){
-                $codorderplaced = $this->ordersuccessfull($cart_id,$prod_name,$price2,$delivery_date,$time_slot,$user_phone);
-                }
+            ]);
+            
                       /////send mail
             $email = DB::table('notificationby')
                    ->select('email','app')

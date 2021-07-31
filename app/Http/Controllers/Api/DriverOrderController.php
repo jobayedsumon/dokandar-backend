@@ -261,21 +261,12 @@ use SendMail;
               ->update(['order_status'=>$status]);
               
         if($update){
-            
-               
+
+
             $sms = DB::table('notificationby')
                       ->select('sms','app')
                       ->where('user_id',$ord->user_id)
                       ->first();
-            $sms_status = $sms->sms;
-            $sms_api_key=  DB::table('msg91')
-    	              ->select('api_key', 'sender_id')
-                      ->first();
-            $api_key = $sms_api_key->api_key;
-            $sender_id = $sms_api_key->sender_id;
-                if($sms_status == 1){
-                $successmsg = $this->delout($cart_id, $prod_name, $price2,$currency,$ord,$user_phone);
-                }
                 
                 //////send app notification////
                 if($sms->app == 1){
@@ -512,16 +503,7 @@ use SendMail;
                       ->select('sms','app')
                       ->where('user_id',$ord->user_id)
                       ->first();
-            $sms_status = $sms->sms;
-            $sms_api_key=  DB::table('msg91')
-    	              ->select('api_key', 'sender_id')
-                      ->first();
-            $api_key = $sms_api_key->api_key;
-            $sender_id = $sms_api_key->sender_id;
-                if($sms_status == 1){
-                    $successmsg = $this->delcomsms($cart_id, $prod_name, $price2,$currency,$user_phone); 
-                   
-                }
+
                 ////send notification to app///
                 if($sms->app == 1){
                 $notification_title = "Order Delivered";
