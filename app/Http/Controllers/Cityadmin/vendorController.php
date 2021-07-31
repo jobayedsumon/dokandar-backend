@@ -333,13 +333,13 @@ class vendorController extends Controller
             else
             {
                 $new_pass=Hash::make($password);
-                $value=array('cityadmin_id'=>$cityadmin_id,'vendor_name'=>$vendor_name,'vendor_logo'=>$vendor_image,'vendor_email'=> $vendor_email,'vendor_phone'=> $vendor_phone, 'vendor_loc'=>$address,'lat'=>$lat,'lng'=>$lng,'opening_time'=>$opening_time, 'closing_time'=>$closing_time,'owner'=>$owner,'updated_at'=>$updated_at,'ui_type'=>$ui_type,'vendor_category_id'=>$vendor_category_id,'vendor_pass'=>$new_pass);
+                $value=array('cityadmin_id'=>$cityadmin_id,'vendor_name'=>$vendor_name,'vendor_logo'=>$vendor_image,'vendor_email'=> $vendor_email,'vendor_phone'=> $vendor_phone, 'vendor_loc'=>$address,'lat'=>$lat,'lng'=>$lng,'opening_time'=>$opening_time, 'closing_time'=>$closing_time,'owner'=>$owner,'updated_at'=>$updated_at,'ui_type'=>$ui_type,'vendor_category_id'=>$vendor_category_id,'vendor_pass'=>$new_pass, 'comission' => $discount, 'delivery_range' => $range);
             }
             
         }
         else
         {
-            $value=array('cityadmin_id'=>$cityadmin_id,'vendor_name'=>$vendor_name,'vendor_logo'=>$vendor_image,'vendor_email'=> $vendor_email,'vendor_phone'=> $vendor_phone, 'vendor_pass'=>$new_pass,'vendor_loc'=>$address,'lat'=>$lat,'lng'=>$lng,'opening_time'=>$opening_time, 'closing_time'=>$closing_time,'owner'=>$owner,'updated_at'=>$updated_at,'ui_type'=>$ui_type,'vendor_category_id'=>$vendor_category_id);
+            $value=array('cityadmin_id'=>$cityadmin_id,'vendor_name'=>$vendor_name,'vendor_logo'=>$vendor_image,'vendor_email'=> $vendor_email,'vendor_phone'=> $vendor_phone, 'vendor_pass'=>$new_pass,'vendor_loc'=>$address,'lat'=>$lat,'lng'=>$lng,'opening_time'=>$opening_time, 'closing_time'=>$closing_time,'owner'=>$owner,'updated_at'=>$updated_at,'ui_type'=>$ui_type,'vendor_category_id'=>$vendor_category_id, 'comission' => $discount, 'delivery_range' => $range);
         }
 
         $update = DB::table('vendor')

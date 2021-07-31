@@ -50,31 +50,31 @@
 					</div>
 					
 					<div class="menu-divider"></div>
-					<div class="menu-header">Area | Delivery Boy | Incentive</div>
+					<div class="menu-header">Area</div>
 					<div class="menu-item">
 						<a href="{{route('pharmacyarea')}}" class="menu-link">
 							<span class="menu-icon"><i class="fa fa-map-marker"></i></span>
 							<span class="menu-text">Area</span>
 						</a>
 					</div>
-					<div class="menu-item">
-						<a href="{{route('pharmacydelivery_boy')}}" class="menu-link">
-							<span class="menu-icon"><i class="fa fa-motorcycle"></i></span>
-							<span class="menu-text">Delivery Boy</span>
-						</a>
-					</div>
-						<div class="menu-item">
-						<a href="{{route('pharmacydelivery_boy_comission')}}" class="menu-link">
-							<span class="menu-icon"><i class="fa fa-book"></i></span>
-							<span class="menu-text">Delivery Boy Comission</span>
-						</a>
-					</div>
-					<div class="menu-item">
-						<a href="{{route('pharmacycityadmindelivery_boy')}}" class="menu-link">
-							<span class="menu-icon"><i class="fa fa-bicycle"></i></span>
-							<span class="menu-text">City Admin Delivery Boys</span>
-						</a>
-					</div>
+{{--					<div class="menu-item">--}}
+{{--						<a href="{{route('pharmacydelivery_boy')}}" class="menu-link">--}}
+{{--							<span class="menu-icon"><i class="fa fa-motorcycle"></i></span>--}}
+{{--							<span class="menu-text">Delivery Boy</span>--}}
+{{--						</a>--}}
+{{--					</div>--}}
+{{--						<div class="menu-item">--}}
+{{--						<a href="{{route('pharmacydelivery_boy_comission')}}" class="menu-link">--}}
+{{--							<span class="menu-icon"><i class="fa fa-book"></i></span>--}}
+{{--							<span class="menu-text">Delivery Boy Comission</span>--}}
+{{--						</a>--}}
+{{--					</div>--}}
+{{--					<div class="menu-item">--}}
+{{--						<a href="{{route('pharmacycityadmindelivery_boy')}}" class="menu-link">--}}
+{{--							<span class="menu-icon"><i class="fa fa-bicycle"></i></span>--}}
+{{--							<span class="menu-text">City Admin Delivery Boys</span>--}}
+{{--						</a>--}}
+{{--					</div>--}}
 				    <div class="menu-divider"></div>
 					<div class="menu-header">Incentive |Coupon</div>
 					

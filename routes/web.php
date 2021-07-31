@@ -609,7 +609,7 @@ Route::group(['namespace'=>'Resturant', 'prefix'=>'restaurant'],function(){
 	   //  Route::post('update_stock','TodayOrderController@update_stock')->name('update_stock');
 	     
 	       //for notification
-     Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('vendor-notification');
+     Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('restaurant-vendor-notification');
     Route::get('resturantcityadmindelivery_boy','delivery_boyController@resturantcityadmindelivery_boy')->name('resturantcityadmindelivery_boy');
     
         
@@ -770,7 +770,7 @@ Route::group(['namespace'=>'Pharmacy', 'prefix'=>'pharmacy'],function(){
 	   //  Route::post('update_stock','TodayOrderController@update_stock')->name('update_stock');
 	     
 	       //for notification
-     Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('vendor-notification');
+     Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('pharmacy-vendor-notification');
     Route::get('pharmacycityadmindelivery_boy','delivery_boyController@pharmacycityadmindelivery_boy')->name('pharmacycityadmindelivery_boy');
     
         
@@ -1495,7 +1495,7 @@ Route::group(['namespace'=>'Parcel', 'prefix'=>'parcel'],function(){
 	   //  Route::post('update_stock','TodayOrderController@update_stock')->name('update_stock');
 	     
 	       //for notification
-     Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('vendor-notification');
+     Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('parcel-vendor-notification');
     Route::get('parcelcityadmindelivery_boy','delivery_boyController@parcelcityadmindelivery_boy')->name('parcelcityadmindelivery_boy');
 
 });

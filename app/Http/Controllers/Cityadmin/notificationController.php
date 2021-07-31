@@ -29,13 +29,11 @@ class notificationController extends Controller
                 [
                     'notification_title' => 'required',
                     'notification_text' => 'required',
-                    'category_image' => 'required',
              
                 ],
                 [
                     'notification_title.required' => 'Enter notification title.',
                     'notification_text.required' => 'Enter notification text.',
-                    'category_image.required' => 'Enter Image for Notification',
                 ]
         );
 
@@ -118,6 +116,7 @@ class notificationController extends Controller
             curl_close($ch);
         }
         $results = json_decode($result);
+
          foreach ($getUser as $getUsers) {
             $insertNotification = DB::table('user_notification')
                                     ->insert([
@@ -128,7 +127,8 @@ class notificationController extends Controller
                                       
                                     ]);
         }
-        return redirect()->back()->withSuccess('Notification send successfully');
+
+        return redirect()->back()->withErrors('Notification send successfully');
     }
     
     
@@ -151,14 +151,12 @@ class notificationController extends Controller
                 [
                     'notification_title' => 'required',
                     'notification_text' => 'required',
-                    'category_image' => 'required',
 
              
                 ],
                 [
                     'notification_title.required' => 'Enter notification title.',
                     'notification_text.required' => 'Enter notification text.',
-                    'category_image.required' => 'Enter Image for Notification',
 
                 ]
         );
@@ -255,7 +253,7 @@ class notificationController extends Controller
         }
         $results = json_decode($result);
 
-        return redirect()->back()->withSuccess('Notification send to store successfully');
+        return redirect()->back()->withErrors('Notification send to store successfully');
     }
     
     

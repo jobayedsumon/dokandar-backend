@@ -38,20 +38,20 @@ class TodayOrderController extends Controller
 							->where('orders.vendor_id', $vendor_id)
 							->whereDate('orders.delivery_date', $currentDate)
     	                    ->orderBy('user_id')
-    	                    ->get(); 
-    	
-    	  $details  =   DB::table('orders')
-    	                ->join('order_details', 'orders.cart_id', '=', 'order_details.order_cart_id') 
-    	                ->join('resturant_variant', 'order_details.varient_id', '=', 'resturant_variant.variant_id')
-    	                ->join('resturant_product','resturant_variant.product_id', '=', 'resturant_product.product_id')
-    	                ->join('restaurant_addons','resturant_product.product_id', '=', 'restaurant_addons.product_id')
-    	                ->join('user_address','orders.address_id', '=', 'user_address.address_id')
-    	               ->join('area', 'user_address.area_id','=', 'area.area_id')
-    	               ->join('vendor_area', 'area.area_id','=', 'vendor_area.area_id')
-    	               ->join('vendor', 'vendor_area.vendor_id','=', 'vendor.vendor_id')
-    	                ->select('resturant_product.product_name','resturant_variant.price','resturant_variant.unit','resturant_variant.strick_price','resturant_product.product_image','order_details.store_order_id','orders.cart_id','order_details.qty','order_details.quantity','order_details.unit')
-    	               ->where('vendor.vendor_id', $vendor_id)
-    	               ->get(); 
+    	                    ->get();
+
+          $details  =   DB::table('orders')
+              ->join('order_details', 'orders.cart_id', '=', 'order_details.order_cart_id')
+              ->leftjoin('resturant_variant', 'order_details.varient_id', '=', 'resturant_variant.variant_id')
+              ->leftjoin('resturant_product','resturant_variant.product_id', '=', 'resturant_product.product_id')
+              ->leftjoin('restaurant_addons','resturant_product.product_id', '=', 'restaurant_addons.product_id')
+              ->join('user_address','orders.address_id', '=', 'user_address.address_id')
+              ->join('area', 'user_address.area_id','=', 'area.area_id')
+              ->join('vendor_area', 'area.area_id','=', 'vendor_area.area_id')
+              ->join('vendor', 'vendor_area.vendor_id','=', 'vendor.vendor_id')
+              ->select('resturant_product.product_name','resturant_variant.price','resturant_variant.unit','resturant_variant.strick_price','resturant_product.product_image','order_details.store_order_id','orders.cart_id','order_details.qty','order_details.quantity','order_details.unit')
+              ->where('vendor.vendor_id', $vendor_id)
+              ->get();
     	
    
     	 $vendordelivery_boy =  DB::table('delivery_boy')
@@ -196,20 +196,20 @@ public function resturant_complete_order(Request $request)
 							->where('orders.vendor_id', $vendor_id)
 							->whereDate('orders.delivery_date', $currentDate)
     	                    ->orderBy('user_id')
-    	                    ->get(); 
-    	
+    	                    ->get();
+
     	  $details  =   DB::table('orders')
-    	                ->join('order_details', 'orders.cart_id', '=', 'order_details.order_cart_id') 
-    	                ->join('resturant_variant', 'order_details.varient_id', '=', 'resturant_variant.variant_id')
-    	                ->join('resturant_product','resturant_variant.product_id', '=', 'resturant_product.product_id')
-    	                ->join('restaurant_addons','resturant_product.product_id', '=', 'restaurant_addons.product_id')
+    	                ->join('order_details', 'orders.cart_id', '=', 'order_details.order_cart_id')
+    	                ->leftjoin('resturant_variant', 'order_details.varient_id', '=', 'resturant_variant.variant_id')
+    	                ->leftjoin('resturant_product','resturant_variant.product_id', '=', 'resturant_product.product_id')
+    	                ->leftjoin('restaurant_addons','resturant_product.product_id', '=', 'restaurant_addons.product_id')
     	                ->join('user_address','orders.address_id', '=', 'user_address.address_id')
     	               ->join('area', 'user_address.area_id','=', 'area.area_id')
     	               ->join('vendor_area', 'area.area_id','=', 'vendor_area.area_id')
     	               ->join('vendor', 'vendor_area.vendor_id','=', 'vendor.vendor_id')
     	                ->select('resturant_product.product_name','resturant_variant.price','resturant_variant.unit','resturant_variant.strick_price','resturant_product.product_image','order_details.store_order_id','orders.cart_id','order_details.qty','order_details.quantity','order_details.unit')
     	               ->where('vendor.vendor_id', $vendor_id)
-    	               ->get(); 
+    	               ->get();
     	
    
     	 $vendordelivery_boy =  DB::table('delivery_boy')

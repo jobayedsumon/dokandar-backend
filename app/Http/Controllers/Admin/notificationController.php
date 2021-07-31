@@ -38,13 +38,11 @@ class notificationController extends Controller
                 [
                     'notification_title' => 'required',
                     'notification_text' => 'required',
-                    'category_image' => 'required',
              
                 ],
                 [
                     'notification_title.required' => 'Enter notification title.',
                     'notification_text.required' => 'Enter notification text.',
-                    'category_image.required' => 'Enter Image for Notification',
                 ]
         );
 
