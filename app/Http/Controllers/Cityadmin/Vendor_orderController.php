@@ -45,9 +45,9 @@ class Vendor_orderController extends Controller
         	 $id=$request->id;
         	 
         	 $vendor= DB::table('vendor')
-        	  ->where('cityadmin_id', $cityadmin->cityadmin_id)
-                        ->get();
-        	 
+        	  ->where('vendor_id', $id)
+                        ->first();
+        	 $ui_type = $vendor->ui_type;
         	 
         	    $currentDate = date('d-m-Y');
                 $day = 1;
@@ -67,19 +67,43 @@ class Vendor_orderController extends Controller
     	                    ->where('vendor.vendor_id', $id)
     	                    ->orderBy('user_id')
     	                 ->get();
-                    	  
-                    	              
-       	  $details  =   DB::table('orders')
-    	                ->join('order_details', 'orders.cart_id', '=', 'order_details.order_cart_id') 
-    	                ->join('product_varient', 'order_details.varient_id', '=', 'product_varient.varient_id')
-    	                ->join('product','product_varient.product_id', '=', 'product.product_id')
-    	                ->join('user_address','orders.address_id', '=', 'user_address.address_id')
-    	               ->join('area', 'user_address.area_id','=', 'area.area_id')
-    	               ->join('vendor_area', 'area.area_id','=', 'vendor_area.area_id')
-    	               ->join('vendor', 'vendor_area.vendor_id','=', 'vendor.vendor_id')
-    	                ->select('product.product_name','product_varient.price','product_varient.unit','product_varient.strick_price','product_varient.varient_image','order_details.store_order_id','orders.cart_id','order_details.qty','order_details.quantity','order_details.unit')
-    	               ->where('vendor.vendor_id', $id)
-    	               ->get(); 
+
+
+//       	  $details  =   DB::table('orders')
+//    	                ->join('order_details', 'orders.cart_id', '=', 'order_details.order_cart_id')
+//    	                ->join('product_varient', 'order_details.varient_id', '=', 'product_varient.varient_id')
+//    	                ->join('product','product_varient.product_id', '=', 'product.product_id')
+//    	                ->join('user_address','orders.address_id', '=', 'user_address.address_id')
+//    	               ->join('area', 'user_address.area_id','=', 'area.area_id')
+//    	               ->join('vendor_area', 'area.area_id','=', 'vendor_area.area_id')
+//    	               ->join('vendor', 'vendor_area.vendor_id','=', 'vendor.vendor_id')
+//    	                ->select('product.product_name','product_varient.price','product_varient.unit','product_varient.strick_price','product_varient.varient_image','order_details.store_order_id','orders.cart_id','order_details.qty','order_details.quantity','order_details.unit')
+//    	               ->where('vendor.vendor_id', $id)
+//    	               ->get();
+
+                //DB::enableQueryLog();
+
+                if ($ui_type == 1) {
+                    $details  =   DB::table('orders')
+                        ->join('order_details', 'orders.cart_id', '=', 'order_details.order_cart_id')
+                        ->leftjoin('product_varient', 'order_details.varient_id', '=', 'product_varient.varient_id')
+                        ->leftjoin('product','product_varient.product_id', '=', 'product.product_id')
+                        ->select('product.product_name','product_varient.price','product_varient.unit','product_varient.strick_price','product_varient.varient_image','order_details.store_order_id','orders.cart_id','order_details.qty','order_details.quantity','order_details.unit')
+                        ->where('orders.vendor_id', $id)
+                        ->get();
+                } else {
+                    $details  =   DB::table('orders')
+                        ->join('order_details', 'orders.cart_id', '=', 'order_details.order_cart_id')
+                        ->leftjoin('resturant_variant', 'order_details.varient_id', '=', 'resturant_variant.variant_id')
+                        ->leftjoin('resturant_product','resturant_variant.product_id', '=', 'resturant_product.product_id')
+                        ->select('resturant_product.product_name','resturant_variant.price','resturant_variant.unit','resturant_variant.strick_price','order_details.store_order_id','orders.cart_id','order_details.qty','order_details.quantity','order_details.unit')
+                        ->where('orders.vendor_id', $id)
+                        ->get();
+                }
+
+
+
+                //dd(DB::getQueryLog());
     	
    
     	 $delivery_boy =  DB::table('delivery_boy')

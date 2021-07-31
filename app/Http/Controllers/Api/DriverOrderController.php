@@ -477,12 +477,22 @@ use SendMail;
         $rewards = $ph->rewards;
         foreach ($var as $h){
         $varient_id = $h->varient_id;
-       $p = DB::table('product_varient')
-           
-            ->join('product','product_varient.product_id','=','product.product_id')
-           ->where('product_varient.varient_id',$varient_id)
-           ->where('product_varient.vendor_id',$vendor_id)
-           ->first();
+
+            if ($ord->ui_type == 1) {
+                $p = DB::table('product_varient')
+
+                    ->join('product','product_varient.product_id','=','product.product_id')
+                    ->where('product_varient.varient_id',$varient_id)
+                    ->where('product_varient.vendor_id',$vendor_id)
+                    ->first();
+            } else {
+                $p = DB::table('resturant_variant')
+                    ->join('resturant_product','resturant_variant.product_id','=','resturant_product.product_id')
+                    ->where('resturant_variant.variant_id',$varient_id)
+                    ->where('resturant_variant.vendor_id',$vendor_id)
+                    ->first();
+            }
+
         $price = $p->price;   
         $order_qty = $h->qty;
         $price2+= $price*$order_qty;
