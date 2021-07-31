@@ -615,14 +615,18 @@ use SendMail;
            
            $cartreward = DB::table('reward_history')
                      ->insert(['cart_id'=>$cart_id, 'reward_points'=>$reward_point, 'user_id'=>$user_id,'total_amount'=>$ord->total_price,'created_at'=>$created_at]);
-            $comission = DB::table('comission')   
-                        ->insert(['cart_id'=>$cart_id, 'vendor_id'=>$vendor_id, 'vendor_name'=>$vendor_name,'comission_price'=>$comission_value,'order_date'=>$order_date,'user_name'=>$user_name,'status'=>'Pending','total_price'=>$product_price,'payment_method'=>$payment_method]);
-            $cash_collect = DB::table('cash_collect')   
-                        ->insert(['cart_id'=>$cart_id, 'vendor_id'=>$vendor_id,'user_id'=>$user_id,'amount'=>$cash_amount,'date_of_collection'=>$created_at,'delivery_boy_id'=>$delivery_boy_id,'created_at'=>$created_at,'no_of_orders'=>1]);
-            $dboy_comission = DB::table('delivery_boy_comission')   
-                        ->insert(['cart_id'=>$cart_id, 'vendor_id'=>$vendor_id,'comission_price'=>$dboy_comission_value,'order_date'=>$order_date,'user_name'=>$user_name,'status'=>'Pending','total_price'=>$product_price,'payment_method'=>$payment_method,'delivery_boy_id'=>$delivery_boy_id]);           
+
             }
-    	   $message = array('status'=>'1', 'message'=>'Delivery Completed');
+
+            $comission = DB::table('comission')
+                ->insert(['cart_id'=>$cart_id, 'vendor_id'=>$vendor_id, 'vendor_name'=>$vendor_name,'comission_price'=>$comission_value,'order_date'=>$order_date,'user_name'=>$user_name,'status'=>'Pending','total_price'=>$product_price,'payment_method'=>$payment_method]);
+            $cash_collect = DB::table('cash_collect')
+                ->insert(['cart_id'=>$cart_id, 'vendor_id'=>$vendor_id,'user_id'=>$user_id,'amount'=>$cash_amount,'date_of_collection'=>$created_at,'delivery_boy_id'=>$delivery_boy_id,'created_at'=>$created_at,'no_of_orders'=>1]);
+            $dboy_comission = DB::table('delivery_boy_comission')
+                ->insert(['cart_id'=>$cart_id, 'vendor_id'=>$vendor_id,'comission_price'=>$dboy_comission_value,'order_date'=>$order_date,'user_name'=>$user_name,'status'=>'Pending','total_price'=>$product_price,'payment_method'=>$payment_method,'delivery_boy_id'=>$delivery_boy_id]);
+
+
+            $message = array('status'=>'1', 'message'=>'Delivery Completed');
         	return $message;
     	          }          
             else{

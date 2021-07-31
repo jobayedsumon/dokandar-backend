@@ -279,6 +279,56 @@ public function complete_order(Request $request)
                   ->update(['dboy_id'=>$delivery_boy,
                       'order_status'=>"Confirmed"
                   ]);
+
+                  ///////send notification to driver//////
+
+                  $notification_title = "WooHoo ! You Got a New Delivery";
+                  $notification_text = "Open the app to see order details and location in map";
+
+                  $getDevice = DB::table('delivery_boy')
+                      ->where('delivery_boy_id', $delivery_boy)
+                      ->select('device_id')
+                      ->first();
+
+                  if($getDevice){
+
+                      $getFcm = DB::table('fcm_key')
+                          ->first();
+
+                      $getFcmKey = $getFcm->dboy_app_key;
+                      $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
+                      $token = $getDevice->device_id;
+
+                      $notification = [
+                          'title' => $notification_title,
+                          'body' => $notification_text,
+                          'sound' => true,
+                      ];
+
+                      $extraNotificationData = ["message" => $notification];
+
+                      $fcmNotification = [
+                          'to'        => $token,
+                          'notification' => $notification,
+                          'data' => $extraNotificationData,
+                      ];
+
+                      $headers = [
+                          'Authorization: key='.$getFcmKey,
+                          'Content-Type: application/json'
+                      ];
+
+                      $ch = curl_init();
+                      curl_setopt($ch, CURLOPT_URL,$fcmUrl);
+                      curl_setopt($ch, CURLOPT_POST, true);
+                      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                      curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fcmNotification));
+                      $result = curl_exec($ch);
+                      curl_close($ch);
+
+                  }
           } catch (QueryException $queryException) {
               die($queryException);
           }

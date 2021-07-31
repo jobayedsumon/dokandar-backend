@@ -188,23 +188,29 @@ class BannervendorController extends Controller
                 ->where('banner_id',$banner_id)
                 ->first();
 
-        $banner_image=$getfile->banner_image;
+        if ($getfile) {
+            $banner_image=$getfile->banner_image;
 
-    	$delete=DB::table('banner')->where('banner_id',$request->id)->delete();
-        if($delete)
-        {
-        
-            if(file_exists($banner_image)){
-                unlink($banner_image);
+            $delete=DB::table('banner')->where('banner_id',$request->id)->delete();
+            if($delete)
+            {
+
+                if(file_exists($banner_image)){
+                    unlink($banner_image);
+                }
+
+                return redirect()->back()->withErrors('delete successfully');
+
             }
-         
-        return redirect()->back()->withErrors('delete successfully');
+            else
+            {
+                return redirect()->back()->withErrors('unsuccessfull delete');
+            }
+        } else {
+            return redirect()->back()->withErrors('delete successfully');
+        }
 
-        }
-        else
-        {
-           return redirect()->back()->withErrors('unsuccessfull delete'); 
-        }
+
          }
     else
          {

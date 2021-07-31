@@ -88,6 +88,7 @@ class Vendor_orderController extends Controller
     	                    ->GroupBy('delivery_boy.delivery_boy_id' , 'delivery_boy.delivery_boy_name' , 'delivery_boy_area.area_id')
     	                    ->where('delivery_boy.delivery_boy_status', 'online')
     	                    ->where('delivery_boy.vendor_id', $id)
+                            ->orWhere('delivery_boy.cityadmin_id', $cityadmin_id)
     	                    ->get();
     	                    
         if(count($delivery_boy)>0){
