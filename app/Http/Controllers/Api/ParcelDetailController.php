@@ -191,17 +191,7 @@ $destination_addres = DB::table('destination_address')
             'total_price'=>$total_price,
             'payment_status'=>$payment_status,
             'payment_method'=>$payment_method
-            ]); 
-             
-            $sms = DB::table('notificationby')
-                      ->select('sms')
-                      ->where('user_id',$user_id)
-                      ->first();
-            $sms_status = $sms->sms;
-            
-                if($sms_status == 1){
-                   
-                }
+            ]);
                       /////send mail
             $email = DB::table('notificationby')
                   ->select('email','app')
@@ -394,15 +384,7 @@ $destination_addres = DB::table('destination_address')
             'total_price'=>$total_price,
             'payment_method'=>$payment_method,
             'payment_status'=>'success'
-            ]);  
-            $sms = DB::table('notificationby')
-                      ->select('sms')
-                      ->where('user_id',$user_id)
-                      ->first();
-            $sms_status = $sms->sms;
-                if($sms_status == 1){
-               
-                }
+            ]);
                       /////send mail
             $email = DB::table('notificationby')
                    ->select('email','app')

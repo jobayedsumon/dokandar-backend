@@ -62,7 +62,7 @@
 					<div class="menu-item">
 						<a href="{{route('vendor_list')}}" class="menu-link">
 							<span class="menu-icon"><i class="fa fa-bullseye"></i></span>
-							<span class="menu-text">Today | Completed</span>
+							<span class="menu-text">Today | NextDay | Completed</span>
 						</a>
 					</div>
 				

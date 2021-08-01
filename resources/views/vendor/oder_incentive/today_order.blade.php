@@ -52,7 +52,6 @@
                         <th>Delivery Date</th>
                         <th>User Name</th>
                         <th>Details</th>
-                        <th>Assign</th>
                         </tr>
                       </thead>
                       
@@ -73,15 +72,15 @@
                                         <td>{{$todayorders->delivery_date}}</td>
                                         <td>{{$todayorders->user_name}}</td>
                                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1{{$todayorders->order_id}}">Details</button></td>
-                                       <td>
-                            @if($todayorders->dboy_id == "0")               
-							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$todayorders->order_id}}">Assign</button>
-							
-							 @else
-							 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$todayorders->order_id}}">Assigned/edit<span>
-                							 ({{$todayorders->delivery_boy_name}})</span></button>
-							 @endif
-                            </td>
+{{--                                       <td>--}}
+{{--                            @if($todayorders->dboy_id == "0")               --}}
+{{--							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$todayorders->order_id}}">Assign</button>--}}
+{{--							--}}
+{{--							 @else--}}
+{{--							 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$todayorders->order_id}}">Assigned/edit<span>--}}
+{{--                							 ({{$todayorders->delivery_boy_name}})</span></button>--}}
+{{--							 @endif--}}
+{{--                            </td>--}}
                                         
                                     </tr>
                                     <div class="modal fade" id="exampleModal{{$todayorders->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

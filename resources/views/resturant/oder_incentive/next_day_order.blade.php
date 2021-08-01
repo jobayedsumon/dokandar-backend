@@ -52,7 +52,7 @@
                         <th>Delivery Date</th>
                         <th>User Name</th>
                         <th>Details</th>
-                        <th>Assign</th>
+
                         </tr>
                       </thead>
                       
@@ -70,16 +70,16 @@
                                         <td>{{$nextdayorders->delivery_date}}</td>
                                         <td>{{$nextdayorders->user_name}}</td>
                                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1{{$nextdayorders->order_id}}">Details</button></td>
-                                       <td>
-                            @if($nextdayorders->dboy_id == "0")               
-							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$nextdayorders->order_id}}">Assign</button>
-							
-							 @else
-							 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$nextdayorders->order_id}}">Assigned/edit<span>
-                							 ({{$nextdayorders->delivery_boy_name}})</span></button>
-							 @endif
-                            </td>
-                                        
+{{--                                       <td>--}}
+{{--                            @if($nextdayorders->dboy_id == "0")               --}}
+{{--							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$nextdayorders->order_id}}">Assign</button>--}}
+{{--							--}}
+{{--							 @else--}}
+{{--							 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$nextdayorders->order_id}}">Assigned/edit<span>--}}
+{{--                							 ({{$nextdayorders->delivery_boy_name}})</span></button>--}}
+{{--							 @endif--}}
+{{--                            </td>--}}
+{{--                                        --}}
                                     </tr>
                                     <div class="modal fade" id="exampleModal{{$nextdayorders->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 	<div class="modal-dialog" role="document">

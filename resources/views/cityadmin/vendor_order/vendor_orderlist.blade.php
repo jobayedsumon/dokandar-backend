@@ -6,7 +6,7 @@
          <!-- DataTales Example -->
               <div class="card shadow" style="width:100%">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Today orders</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Vendor Orders</h6>
                   @if (count($errors) > 0)
                               @if($errors->any())
                                 <div class="alert alert-primary" role="alert">
@@ -50,7 +50,7 @@
 
                                     <td>
                                               <a href="{{route('today_order1',[$vendors->vendor_id])}}" class="btn btn-primary">Today</a>
-                                              <!--<a href="{{route('next_order1',[$vendors->vendor_id])}}" class="btn btn-info">Next Order</a>-->
+                                              <a href="{{route('next_order1',[$vendors->vendor_id])}}" class="btn btn-info">Next Day</a>
                                               <a href="{{route('completed_order1',[$vendors->vendor_id])}}" class="btn btn-success">Completed</a>
                                     </td>
                                     <!-- <td>-->
