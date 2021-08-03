@@ -480,7 +480,7 @@ use SendMail;
             $cash_collect = DB::table('cash_collect')
                 ->insert(['cart_id'=>$cart_id, 'vendor_id'=>$vendor_id,'user_id'=>$user_id,'amount'=>$cash_amount,'date_of_collection'=>$created_at,'delivery_boy_id'=>$delivery_boy_id,'created_at'=>$created_at,'no_of_orders'=>1]);
             $dboy_comission = DB::table('delivery_boy_comission')
-                ->insert(['cart_id'=>$cart_id, 'vendor_id'=>$vendor_id,'comission_price'=>$dboy_comission_value,'order_date'=>$created_at,'user_name'=>$user_name,'status'=>'Pending','total_price'=>$total_price,'payment_method'=>$payment_method,'delivery_boy_id'=>$delivery_boy_id]);
+                ->insert(['cart_id'=>$cart_id, 'vendor_id'=>$vendor_id,'comission_price'=>$dboy_comission,'order_date'=>$created_at,'user_name'=>$user_name,'status'=>'Pending','total_price'=>$total_price,'payment_method'=>$payment_method,'delivery_boy_id'=>$delivery_boy_id]);
 
             $message = array('status'=>'1', 'message'=>'Delivery Completed');
         	return $message;

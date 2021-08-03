@@ -56,7 +56,7 @@
                     </div>
                     
                      <div class="form-group">
-                      <label for="exampleInputName1">Delivery Boy Comission</label>
+                      <label for="exampleInputName1">Delivery Boy Commission</label>
                       <input type="text" class="form-control" id="exampleInputName1" name="delivery_boy_comission" value="{{$delivery_boy->dboy_comission}}"requirment>
                     </div>
                     

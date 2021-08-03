@@ -49,8 +49,8 @@
                       <input type="text" class="form-control" id="exampleInputName1" name="delivery_boy_phone" placeholder="Phone Number" required>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputName1">Delivery Boy Comission</label>
-                      <input type="text" class="form-control" id="exampleInputName1" name="delivery_boy_comission" placeholder="Comission in Percentage like 20%" required>
+                      <label for="exampleInputName1">Delivery Boy Commission</label>
+                      <input type="text" class="form-control" id="exampleInputName1" name="delivery_boy_comission" placeholder="Commission in Fixed Amount" required>
                     </div>
                      <div class="form-group">
                       <label for="exampleInputName1">Password</label>
