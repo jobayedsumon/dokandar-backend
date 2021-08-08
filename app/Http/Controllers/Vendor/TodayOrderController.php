@@ -8,10 +8,11 @@ use App\Http\Controllers\Controller;
 use DB;
 use Session;
 use Carbon\Carbon;
+use App\Traits\SendSms;
 
 class TodayOrderController extends Controller
 {
-    
+    use SendSms;
    public function today_order_vendor(Request $request)
     {
       if(Session::has('vendor'))
@@ -282,13 +283,19 @@ public function complete_order(Request $request)
 
                   ///////send notification to driver//////
 
-                  $notification_title = "WooHoo ! You Got a New Delivery";
-                  $notification_text = "Open the app to see order details and location in map";
+              $order = DB::table('orders')
+                  ->where('order_id',$order_id)
+                  ->select('cart_id')->first();
+
+              $notification_title = "WooHoo ! You Got a New Delivery";
+                  $notification_text = "Order id is #".$order->cart_id.". Open the app to see order details and location in map";
 
                   $getDevice = DB::table('delivery_boy')
                       ->where('delivery_boy_id', $delivery_boy)
-                      ->select('device_id')
+                      ->select('device_id', 'delivery_boy_phone')
                       ->first();
+
+                $this->send_msg($notification_text, $getDevice->delivery_boy_phone);
 
                   if($getDevice){
 

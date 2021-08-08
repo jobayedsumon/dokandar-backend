@@ -92,7 +92,7 @@
                                 			</div>
                                 			@if($boy_area_id !='N/A')
                                 			<!--//form-->
-                                			<form action="{{route('assigned_order')}}" method="post">   
+                                			<form action="{{route('assign_delivery_boy')}}" method="post">
                                 			{{csrf_field()}}
                                 			<div class="modal-body">
                                 			 <div class="form-group">

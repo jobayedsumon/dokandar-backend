@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\cityadmin;
 
+use App\Traits\SendSms;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
@@ -12,6 +14,7 @@ use Excel;
 
 class delivery_boyController extends Controller
 {
+    use SendSms;
     public function delivery_boy(Request $request)
     {
      if(Session::has('cityadmin'))
@@ -380,6 +383,82 @@ class delivery_boyController extends Controller
      ->where([['delivery_boy_name','=',$deliveryboy]])->get();
        return $od;
     }
+}
+
+public function assign_delivery_boy(Request $request)
+{
+
+    $delivery_boy = $request->delivery_boy_name;
+
+    $order_id = $request->order_id;
+
+    try {
+        $update = DB::table('orders')
+            ->where('order_id',$order_id)
+            ->update(['dboy_id'=>$delivery_boy,
+                'order_status'=>"Confirmed"
+            ]);
+
+        ///////send notification to driver//////
+
+        $order = DB::table('orders')
+            ->where('order_id',$order_id)
+            ->select('cart_id')->first();
+
+        $notification_title = "WooHoo ! You Got a New Delivery";
+        $notification_text = "Order id is #".$order->cart_id.". Open the app to see order details and location in map";
+
+        $getDevice = DB::table('delivery_boy')
+            ->where('delivery_boy_id', $delivery_boy)
+            ->select('device_id', 'delivery_boy_phone')
+            ->first();
+
+        $this->send_msg($notification_text, $getDevice->delivery_boy_phone);
+
+        if($getDevice){
+
+            $getFcm = DB::table('fcm_key')
+                ->first();
+
+            $getFcmKey = $getFcm->dboy_app_key;
+            $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
+            $token = $getDevice->device_id;
+
+            $notification = [
+                'title' => $notification_title,
+                'body' => $notification_text,
+                'sound' => true,
+            ];
+
+            $extraNotificationData = ["message" => $notification];
+
+            $fcmNotification = [
+                'to'        => $token,
+                'notification' => $notification,
+                'data' => $extraNotificationData,
+            ];
+
+            $headers = [
+                'Authorization: key='.$getFcmKey,
+                'Content-Type: application/json'
+            ];
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL,$fcmUrl);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fcmNotification));
+            $result = curl_exec($ch);
+            curl_close($ch);
+
+        }
+    } catch (QueryException $queryException) {
+        die($queryException);
+    }
+
+    return redirect()->back()->withErrors('Delivery boy assigned successfully');
 }
     
 }

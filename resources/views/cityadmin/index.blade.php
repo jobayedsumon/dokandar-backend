@@ -347,21 +347,7 @@
                                             </div>
                                             <div class="font-weight-600 text-dark">5.00%</div>
                                         </div>
-                                        <div class="fs-12px text-right">
-                                            <span class="fs-10px">powered by </span>
-                                            <span class="d-inline-flex font-weight-600">
-                                                <span class="text-primary">T</span>
-                                                <span class="text-primary">e</span>
-                                                <span class="text-primary">c</span>
-                                                <span class="text-primary">M</span>
-                                                <span class="text-primary">a</span>
-                                                <span class="text-primary">n</span>
-                                                <span class="text-primary">i</span>
-                                                <span class="text-primary">c</span>
-                                            </span>
-                                            <span class="fs-10px">made with  <i class="fa fa-heart" aria-hidden="true"></i>
-                                                            </span>
-                                        </div>
+
                                     </div>
                                 </div>
                                  <!--END card-body -->

@@ -868,6 +868,8 @@ Route::group(['namespace'=>'Cityadmin', 'prefix'=>'cityadmin'],function(){
           
         Route::post('searchdelivery_boy','delivery_boyController@searchdelivery_boy')->name('searchdelivery_boy');
 
+        Route::post('assign_delivery_boy','delivery_boyController@assign_delivery_boy')->name('assign_delivery_boy');
+
          Route::get('delivery_boy','delivery_boyController@delivery_boy')->name('delivery_boy');
          Route::get('delivery_boy/add','delivery_boyController@Adddelivery_boy')->name('add-delivery_boy');
          Route::post('delivery_boy/add/new','delivery_boyController@AddNewdelivery_boy')->name('AddNewdelivery_boy');

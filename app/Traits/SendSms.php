@@ -242,40 +242,58 @@ trait SendSms {
     
      public function otpmsg($otpval,$user_phone) 
      {
-        $getInvitationMsg = "Your OTP is: ".$otpval.".\nNote: Please DO NOT SHARE this OTP with anyone."; 
+         $username = "kap.ashraful";
+         $hash = "46f96dd0ec093837a0c056993d088e26";
+         $message = "Your OTP is: ".$otpval.".\nNote: Please DO NOT SHARE this OTP with anyone.";
+
+         $params = array('app'=>'ws', 'u'=>$username, 'h'=>$hash, 'op'=>'pv', 'unicode'=>'1','to'=>$user_phone, 'msg'=>$message);
+
+         $ch = curl_init();
+         curl_setopt($ch, CURLOPT_URL, "http://alphasms.biz/index.php?".http_build_query($params, "", "&"));
+         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type:application/json", "Accept:application/json"));
+         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+         $response = curl_exec($ch);
+         curl_close ($ch);
+    }
+
+    public function otpmsg_old($otpval,$user_phone)
+    {
+        $getInvitationMsg = "Your OTP is: ".$otpval.".\nNote: Please DO NOT SHARE this OTP with anyone.";
         $smsby =  DB::table('smsby')
-               ->first();
-        if($smsby->status==1){         
-        if($smsby->msg91==1){       
-         $sms_api_key=  DB::table('msg91')
-    	              ->select('api_key', 'sender_id')
-                      ->first();
-                        $api_key = $sms_api_key->api_key;
-                        $sender_id = $sms_api_key->sender_id;
-                        $getAuthKey = $api_key;
-                        $getSenderId = $sender_id;
-                        
-                        $authKey = $getAuthKey;
-                        $senderId = $getSenderId;
-                        $message1 = $getInvitationMsg;
-                        $route = "4";
-                        $postData = array(
-                            'authkey' => $authKey,
-                            'mobiles' => $user_phone,
-                            'message' => $message1,
-                            'sender' => $senderId,
-                            'route' => $route
-                        );
-        
-                        $url="https://control.msg91.com/api/sendhttp.php";
-        
-                        $ch = curl_init();
-                        curl_setopt_array($ch, array(
-                            CURLOPT_URL => $url,
-                            CURLOPT_RETURNTRANSFER => true,
-                            CURLOPT_POST => true,
-                            CURLOPT_POSTFIELDS => $postData
-                        ));
+            ->first();
+        if($smsby->status==1){
+            if($smsby->msg91==1){
+                $sms_api_key=  DB::table('msg91')
+                    ->select('api_key', 'sender_id')
+                    ->first();
+                $api_key = $sms_api_key->api_key;
+                $sender_id = $sms_api_key->sender_id;
+                $getAuthKey = $api_key;
+                $getSenderId = $sender_id;
+
+                $authKey = $getAuthKey;
+                $senderId = $getSenderId;
+                $message1 = $getInvitationMsg;
+                $route = "4";
+                $postData = array(
+                    'authkey' => $authKey,
+                    'mobiles' => $user_phone,
+                    'message' => $message1,
+                    'sender' => $senderId,
+                    'route' => $route
+                );
+
+                $url="https://control.msg91.com/api/sendhttp.php";
+
+                $ch = curl_init();
+                curl_setopt_array($ch, array(
+                    CURLOPT_URL => $url,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_POST => true,
+                    CURLOPT_POSTFIELDS => $postData
+                ));
 
                 //Ignore SSL certificate verification
                 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
@@ -285,36 +303,53 @@ trait SendSms {
                 $output = curl_exec($ch);
 
                 curl_close($ch);
-        }else{
-      
-       $twilio=DB::table('twilio')
-             ->first();
-                           
-       $twilsid = $twilio->twilio_sid;  
-       $twiltoken = $twilio->twilio_token; 
-       $twilphone = $twilio->twilio_phone; 
-         // send SMS
-        // Your Account SID and Auth Token from twilio.com/console
-        $sid = $twilsid;
-        $token = $twiltoken;
-        $client = new Client($sid, $token);
-        $user = $user_phone;
-        // Use the client to do fun stuff like send text messages!
-        $client->messages->create(
-            // the number you'd like to send the message to
-            $user,
-            array(
-                // A Twilio phone number you purchased at twilio.com/console
-                'from' => $twilphone,
-                // the body of the text message you'd like to send
-                'body' => $getInvitationMsg
-               
-            )
-        );
+            }
+            else{
+
+                $twilio=DB::table('twilio')
+                    ->first();
+
+                $twilsid = $twilio->twilio_sid;
+                $twiltoken = $twilio->twilio_token;
+                $twilphone = $twilio->twilio_phone;
+                // send SMS
+                // Your Account SID and Auth Token from twilio.com/console
+                $sid = $twilsid;
+                $token = $twiltoken;
+                $client = new Client($sid, $token);
+                $user = $user_phone;
+                // Use the client to do fun stuff like send text messages!
+                $client->messages->create(
+                // the number you'd like to send the message to
+                    $user,
+                    array(
+                        // A Twilio phone number you purchased at twilio.com/console
+                        'from' => $twilphone,
+                        // the body of the text message you'd like to send
+                        'body' => $getInvitationMsg
+
+                    )
+                );
+            }
         }
-        }          
     }
 
+    public function send_msg($message, $user_phone)
+    {
+        $username = "kap.ashraful";
+        $hash = "46f96dd0ec093837a0c056993d088e26";
+
+        $params = array('app'=>'ws', 'u'=>$username, 'h'=>$hash, 'op'=>'pv', 'unicode'=>'1','to'=>$user_phone, 'msg'=>$message);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://alphasms.biz/index.php?".http_build_query($params, "", "&"));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type:application/json", "Accept:application/json"));
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+        $response = curl_exec($ch);
+        curl_close ($ch);
+    }
 
 
 //////Store Payout////////

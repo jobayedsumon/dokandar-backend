@@ -332,11 +332,16 @@ class OrderController extends Controller
                 ///////send notification to vendor//////
               
                 $notification_title = "WooHoo ! You Got a New Order";
-                $notification_text = "you got an order cart id #".$cart_id." contains of " .$prod_name." of price bdt ".$price2. ". It will have to delivered on ".$delivery_date." between ".$time_slot.".";
-                
+                $notification_text = "You got an order cart id #".$cart_id." contains of " .$prod_name." of price bdt ".$price2. ". It will have to delivered on ".$delivery_date." between ".$time_slot.".";
+
+
                 $date = date('d-m-Y');
                 $getUser = DB::table('vendor')
-                                ->get();
+                            ->where('vendor_id', $vendor_id)
+                            ->select('vendor_phone')
+                            ->first();
+
+                $this->send_msg($notification_text, $getUser->vendor_phone);
         
                 $getDevice = DB::table('vendor')
                          ->where('vendor_id', $vendor_id)

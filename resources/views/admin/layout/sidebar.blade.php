@@ -82,26 +82,26 @@
 					
 					<div class="menu-divider"></div>
 					<div class="menu-header">Commission</div>
-{{--					<div class="menu-item">--}}
-{{--						<a href="{{route('RewardList')}}" class="menu-link">--}}
-{{--							<span class="menu-icon"><i class="fa fa-trophy"></i></span>--}}
-{{--							<span class="menu-text">Rewards</span>--}}
-{{--						</a>--}}
-{{--					</div>--}}
-{{--					--}}
-{{--					<div class="menu-item">--}}
-{{--						<a href="{{route('reedem')}}" class="menu-link">--}}
-{{--							<span class="menu-icon"><i class="fa fa-gift"></i></span>--}}
-{{--							<span class="menu-text">Redeem Points</span>--}}
-{{--						</a>--}}
-{{--					</div>--}}
-{{--					--}}
-{{--						<div class="menu-item">--}}
-{{--						<a href="{{route('reffer')}}" class="menu-link">--}}
-{{--							<span class="menu-icon"><i class="fa fa-share-alt"></i></span>--}}
-{{--							<span class="menu-text">App Refer</span>--}}
-{{--						</a>--}}
-{{--					</div>--}}
+					<div class="menu-item">
+						<a href="{{route('RewardList')}}" class="menu-link">
+							<span class="menu-icon"><i class="fa fa-trophy"></i></span>
+							<span class="menu-text">Rewards</span>
+						</a>
+					</div>
+
+					<div class="menu-item">
+						<a href="{{route('reedem')}}" class="menu-link">
+							<span class="menu-icon"><i class="fa fa-gift"></i></span>
+							<span class="menu-text">Redeem Points</span>
+						</a>
+					</div>
+
+						<div class="menu-item">
+						<a href="{{route('reffer')}}" class="menu-link">
+							<span class="menu-icon"><i class="fa fa-share-alt"></i></span>
+							<span class="menu-text">App Refer</span>
+						</a>
+					</div>
 						<div class="menu-item">
 						<a href="{{route('admincomission')}}" class="menu-link">
 							<span class="menu-icon"><i class="fa fa-book"></i></span>

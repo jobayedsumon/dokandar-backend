@@ -77,7 +77,7 @@
                                 					</button>
                                 			</div>
                                 			<!--//form-->
-                                			<form action="{{route('assigned')}}" method="post">   
+                                			<form action="{{route('assigned')}}" method="post">
                                 			{{csrf_field()}}
                                 			<div class="modal-body">
                                 			 <div class="form-group">
