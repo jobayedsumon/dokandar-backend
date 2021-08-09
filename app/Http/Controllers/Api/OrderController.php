@@ -636,25 +636,6 @@ class OrderController extends Controller
                         'order_status'=>$order_status,
                         'canceled_at'=>$updated_at]);
                         
-                        /*notification to vendor order cancel*/
-
-
-                        
-                 $q = DB::table('tbl_user')
-                              ->select('user_email','user_name')
-                              ->where('user_id',$user_id1)
-                              ->first();
-
-            $user_email = $q->user_email;             
-                 
-            $user_name = $q->user_name;       
-                
-           
-                   
-                    $codordercanceled = $this->ordercanceledMail($cart_id,$user_email,$user_name);
-                  
-                       
-                        
       
        if($order){
         if($user->payment_method == 'COD' || $user->payment_method == 'Cod' || $user->payment_method == 'cod'){
