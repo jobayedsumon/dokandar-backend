@@ -1,35 +1,25 @@
 <?php
-//use Twilio\Rest\Client;
-//Route::get('/sms', function () {
-//    $twilio=DB::table('twilio')
-//        ->first();
+use App\Traits\SendSms;
+//Route::get('test-sms', function () {
 //
+//    $username = "kap.ashraful";
+//    $hash = "46f96dd0ec093837a0c056993d088e26";
 //    $user_phone = '+8801677242853';
-//    $getInvitationMsg = 'Hello, this is a test message';
+//    $message = 'Hello From AlphaBiz';
 //
-//    $twilsid = $twilio->twilio_sid;
-//    $twiltoken = $twilio->twilio_token;
-//    $twilphone = $twilio->twilio_phone;
-//    // send SMS
-//    // Your Account SID and Auth Token from twilio.com/console
-//    $sid = $twilsid;
-//    $token = $twiltoken;
-//    $client = new Client($sid, $token);
+//    $params = array('app'=>'ws', 'u'=>$username, 'h'=>$hash, 'op'=>'pv', 'unicode'=>'1','to'=>$user_phone, 'msg'=>$message);
 //
-//    $user = $user_phone;
-//    // Use the client to do fun stuff like send text messages!
+//    $ch = curl_init();
+//    curl_setopt($ch, CURLOPT_URL, "http://alphasms.biz/index.php?".http_build_query($params, "", "&"));
+//    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type:application/json", "Accept:application/json"));
+//    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 //
-//    $client->messages->create(
-//    // the number you'd like to send the message to
-//        $user,
-//        array(
-//            // A Twilio phone number you purchased at twilio.com/console
-//            'from' => $twilphone,
-//            // the body of the text message you'd like to send
-//            'body' => $getInvitationMsg
+//    $response = curl_exec($ch);
 //
-//        )
-//    );
+//    curl_close ($ch);
+//    dd($response);
+//
 //});
 
 //login

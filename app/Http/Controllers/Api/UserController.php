@@ -824,6 +824,7 @@ class UserController extends Controller
         $checkuser = DB::table('tbl_user')
                          ->where('user_phone', $user_phone)
                          ->first();
+
         if($checkuser)  {
             if($checkuser->phone_verified==1)  {
              	$chars = "0123456789";
@@ -835,7 +836,12 @@ class UserController extends Controller
                                 ->where('user_phone', $user_phone)
                                 ->update(['otp'=>$otpval]);
 
-                $otpmsg = $this->otpmsg($otpval,$user_phone);
+                try {
+                    $otpmsg = $this->otpmsg($otpval,$user_phone);
+                } catch (\Exception $exception) {
+                    return json_encode($exception->getMessage());
+                }
+
 
             $message = array('status'=>1, 'message'=>"OTP sent to number");
             return $message;

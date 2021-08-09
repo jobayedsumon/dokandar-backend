@@ -244,7 +244,7 @@ trait SendSms {
      {
          $username = "kap.ashraful";
          $hash = "46f96dd0ec093837a0c056993d088e26";
-         $message = "Your OTP is: ".$otpval.".\nNote: Please DO NOT SHARE this OTP with anyone.";
+         $message = "Your Dokandar.xyz OTP is: ".$otpval.".\nNote: Please DO NOT SHARE this OTP with anyone.";
 
          $params = array('app'=>'ws', 'u'=>$username, 'h'=>$hash, 'op'=>'pv', 'unicode'=>'1','to'=>$user_phone, 'msg'=>$message);
 
@@ -255,7 +255,9 @@ trait SendSms {
          curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
          $response = curl_exec($ch);
+
          curl_close ($ch);
+
     }
 
     public function otpmsg_old($otpval,$user_phone)
