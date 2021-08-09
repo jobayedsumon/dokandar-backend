@@ -413,7 +413,7 @@ public function assign_delivery_boy(Request $request)
             ->select('device_id', 'delivery_boy_phone')
             ->first();
 
-        $this->send_msg($notification_text, $getDevice->delivery_boy_phone);
+        $this->send_msg("You Got a New Delivery. " . $notification_text, $getDevice->delivery_boy_phone);
 
         if($getDevice){
 
