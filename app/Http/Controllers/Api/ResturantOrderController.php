@@ -660,12 +660,14 @@ class ResturantOrderController extends Controller
                      ->where('user_id',$user_id1)
                      ->first();
       $reason = $request->reason;
+      $description = $request->description;
       $order_status = 'Cancelled';
       $updated_at = Carbon::now();
       $order = DB::table('orders')
                   ->where('cart_id', $cart_id)
                   ->update([
                         'cancelling_reason'=>$reason,
+                        'cancel_description'=>$description,
                         'order_status'=>$order_status,
                         'canceled_at'=>$updated_at]);
       
@@ -764,7 +766,7 @@ class ResturantOrderController extends Controller
             ->join ('restaurant_addons', 'resturant_product.product_id', '=', 'restaurant_addons.product_id')
                   ->select('resturant_variant.variant_id','resturant_product.product_name', 'resturant_product.product_image','order_details.qty','resturant_product.description','resturant_variant.unit','resturant_variant.quantity','order_details.order_cart_id','restaurant_addons.addon_name','restaurant_addons.addon_price','restaurant_addons.addon_id')
                   ->where('order_details.order_cart_id',$completeds->cart_id)
-                  ->groupBy('resturant_variant.variant_id','resturant_product.product_name', 'resturant_product.product_image','order_details.qty','resturant_product.description','resturant_variant.unit','resturant_variant.quantity','order_details.order_cart_id','restaurant_addons.addon_name','restaurant_addons.addon_price','restaurant_addons.addon_id')
+                  ->groupBy('resturant_variant.variant_id','resturant_product.product_name', 'resturant_product.product_image','order_details.qty','resturant_product.description','resturant_variant.unit','resturant_variant.quantity','order_details.order_cart_id','restaurant_addons.addon_name','restaurant_addons.addon_price','restaurant_addons.addon_id', 'order_details.order_date')
                   ->orderBy('order_details.order_date', 'DESC')
                   ->get();
                   

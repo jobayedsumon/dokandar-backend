@@ -625,21 +625,26 @@ class OrderController extends Controller
                      ->where('user_id',$user_id1)
                      ->first();
       $reason = $request->reason;
+      $description = $request->description;
       $order_status = 'Cancelled';
       $updated_at = Carbon::now();
       $order = DB::table('orders')
                   ->where('cart_id', $cart_id)
                   ->update([
                         'cancelling_reason'=>$reason,
+                        'cancel_description'=>$description,
                         'order_status'=>$order_status,
                         'canceled_at'=>$updated_at]);
                         
                         /*notification to vendor order cancel*/
+
+
                         
                  $q = DB::table('tbl_user')
                               ->select('user_email','user_name')
                               ->where('user_id',$user_id1)
                               ->first();
+
             $user_email = $q->user_email;             
                  
             $user_name = $q->user_name;       
