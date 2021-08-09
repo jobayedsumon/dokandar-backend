@@ -212,6 +212,13 @@ $destination_addres = DB::table('destination_address')
              if($email->app ==1){
                   $notification_title = "WooHoo! Your Order is Placed";
                 $notification_text = "Order Successfully Placed: Your order id #'.$cart_id.' ";
+
+                 $getUser = DB::table('vendor')
+                     ->where('vendor_id', $vendor_id)
+                     ->select('vendor_phone')
+                     ->first();
+
+                 $this->send_msg($notification_text, $getUser->vendor_phone);
                 
                 $date = date('d-m-Y');
         
