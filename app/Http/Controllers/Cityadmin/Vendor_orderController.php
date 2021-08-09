@@ -66,7 +66,7 @@ class Vendor_orderController extends Controller
     	                    ->select('orders.vendor_id', 'area.area_id','orders.order_id','orders.order_id','orders.user_id','orders.delivery_date','tbl_user.user_name','orders.dboy_id','orders.delivery_charge', 'orders.total_price','orders.total_products_mrp','orders.delivery_charge','delivery_boy.delivery_boy_name','orders.dboy_id','orders.order_status','orders.cart_id','orders.delivery_date','user_address.user_number','user_address.user_name','user_address.address','orders.time_slot','orders.delivery_charge','orders.paid_by_wallet','orders.rem_price','orders.price_without_delivery','orders.coupon_discount')
                             ->whereDate('orders.order_date', date('Y-m-d'))
     	                    ->where('orders.vendor_id', $id)
-
+                            ->where('orders.payment_status','!=', 'NULL')
     	                    ->get();
 
 //       	  $details  =   DB::table('orders')
@@ -171,7 +171,7 @@ class Vendor_orderController extends Controller
     	                    ->select('area.area_id','orders.order_id','orders.order_id','orders.user_id','orders.delivery_date','tbl_user.user_name','orders.dboy_id','orders.delivery_charge', 'orders.total_price','orders.total_products_mrp','orders.delivery_charge','delivery_boy.delivery_boy_name','orders.dboy_id','orders.order_status','orders.cart_id','orders.delivery_date','user_address.user_number','user_address.user_name','user_address.address','orders.time_slot','orders.delivery_charge','orders.paid_by_wallet','orders.rem_price','orders.price_without_delivery','orders.coupon_discount')
     	                     ->whereDate('orders.delivery_date', $end)
     	                    ->where('orders.vendor_id', $id)
-    	                    ->orderBy('user_id')
+                            ->where('orders.payment_status','!=', 'NULL')
     	                    ->get();
 
           if ($ui_type == 1) {
@@ -261,6 +261,7 @@ class Vendor_orderController extends Controller
                             ->distinct()
     	                    ->select('area.area_id','orders.order_id','orders.order_id','orders.user_id','orders.delivery_date','tbl_user.user_name','orders.dboy_id','orders.delivery_charge', 'orders.total_price','orders.total_products_mrp','orders.delivery_charge','delivery_boy.delivery_boy_name','orders.dboy_id','orders.order_status','orders.cart_id','orders.delivery_date','user_address.user_number','user_address.user_name','user_address.address','orders.time_slot','orders.delivery_charge','orders.paid_by_wallet','orders.rem_price','orders.price_without_delivery','orders.coupon_discount')
     	                     ->where('orders.order_status',"Completed")
+                            ->where('orders.payment_status','!=', 'NULL')
     	                    ->where('orders.vendor_id', $id)
     	                    ->orderBy('user_id')
     	                    ->get();
