@@ -59,17 +59,15 @@ class Vendor_orderController extends Controller
     	                    ->join('tbl_user', 'orders.user_id', '=', 'tbl_user.user_id')
     	                    ->join('user_address','orders.address_id', '=', 'user_address.address_id')
     	                    ->join('area', 'user_address.area_id','=', 'area.area_id')
-    	                    ->join('vendor_area', 'area.area_id','=', 'vendor_area.area_id')
+       	                    ->join('vendor_area', 'area.area_id','=', 'vendor_area.area_id')
     	                    ->join('vendor', 'vendor_area.vendor_id','=', 'vendor.vendor_id')
     	                    ->leftJoin('delivery_boy','orders.dboy_id', '=','delivery_boy.delivery_boy_id')
-    	                    ->select('area.area_id','orders.order_id','orders.order_id','orders.user_id','orders.delivery_date','tbl_user.user_name','orders.dboy_id','orders.delivery_charge', 'orders.total_price','orders.total_products_mrp','orders.delivery_charge','delivery_boy.delivery_boy_name','orders.dboy_id','orders.order_status','orders.cart_id','orders.delivery_date','user_address.user_number','user_address.user_name','user_address.address','orders.time_slot','orders.delivery_charge','orders.paid_by_wallet','orders.rem_price','orders.price_without_delivery','orders.coupon_discount')
-    	                 
+                            ->distinct()
+    	                    ->select('orders.vendor_id', 'area.area_id','orders.order_id','orders.order_id','orders.user_id','orders.delivery_date','tbl_user.user_name','orders.dboy_id','orders.delivery_charge', 'orders.total_price','orders.total_products_mrp','orders.delivery_charge','delivery_boy.delivery_boy_name','orders.dboy_id','orders.order_status','orders.cart_id','orders.delivery_date','user_address.user_number','user_address.user_name','user_address.address','orders.time_slot','orders.delivery_charge','orders.paid_by_wallet','orders.rem_price','orders.price_without_delivery','orders.coupon_discount')
+                            ->whereDate('orders.order_date', date('Y-m-d'))
     	                    ->where('orders.vendor_id', $id)
-    	                    ->orderBy('user_id')
-    	                 ->get();
 
-
-
+    	                    ->get();
 
 //       	  $details  =   DB::table('orders')
 //    	                ->join('order_details', 'orders.cart_id', '=', 'order_details.order_cart_id')
@@ -169,6 +167,7 @@ class Vendor_orderController extends Controller
     	                    ->join('vendor_area', 'area.area_id','=', 'vendor_area.area_id')
     	                    ->join('vendor', 'vendor_area.vendor_id','=', 'vendor.vendor_id')
     	                    ->leftJoin('delivery_boy','orders.dboy_id', '=','delivery_boy.delivery_boy_id')
+                            ->distinct()
     	                    ->select('area.area_id','orders.order_id','orders.order_id','orders.user_id','orders.delivery_date','tbl_user.user_name','orders.dboy_id','orders.delivery_charge', 'orders.total_price','orders.total_products_mrp','orders.delivery_charge','delivery_boy.delivery_boy_name','orders.dboy_id','orders.order_status','orders.cart_id','orders.delivery_date','user_address.user_number','user_address.user_name','user_address.address','orders.time_slot','orders.delivery_charge','orders.paid_by_wallet','orders.rem_price','orders.price_without_delivery','orders.coupon_discount')
     	                     ->whereDate('orders.delivery_date', $end)
     	                    ->where('orders.vendor_id', $id)
@@ -259,6 +258,7 @@ class Vendor_orderController extends Controller
     	                    ->join('vendor_area', 'area.area_id','=', 'vendor_area.area_id')
     	                     ->join('vendor', 'vendor_area.vendor_id','=', 'vendor.vendor_id')
     	                    ->leftJoin('delivery_boy','orders.dboy_id', '=','delivery_boy.delivery_boy_id')
+                            ->distinct()
     	                    ->select('area.area_id','orders.order_id','orders.order_id','orders.user_id','orders.delivery_date','tbl_user.user_name','orders.dboy_id','orders.delivery_charge', 'orders.total_price','orders.total_products_mrp','orders.delivery_charge','delivery_boy.delivery_boy_name','orders.dboy_id','orders.order_status','orders.cart_id','orders.delivery_date','user_address.user_number','user_address.user_name','user_address.address','orders.time_slot','orders.delivery_charge','orders.paid_by_wallet','orders.rem_price','orders.price_without_delivery','orders.coupon_discount')
     	                     ->where('orders.order_status',"Completed")
     	                    ->where('orders.vendor_id', $id)
