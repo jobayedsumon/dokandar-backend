@@ -1,26 +1,26 @@
 <?php
 use App\Traits\SendSms;
-//Route::get('test-sms', function () {
-//
-//    $username = "kap.ashraful";
-//    $hash = "46f96dd0ec093837a0c056993d088e26";
-//    $user_phone = '+8801677242853';
-//    $message = 'Hello From AlphaBiz';
-//
-//    $params = array('app'=>'ws', 'u'=>$username, 'h'=>$hash, 'op'=>'pv', 'unicode'=>'1','to'=>$user_phone, 'msg'=>$message);
-//
-//    $ch = curl_init();
-//    curl_setopt($ch, CURLOPT_URL, "http://alphasms.biz/index.php?".http_build_query($params, "", "&"));
-//    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type:application/json", "Accept:application/json"));
-//    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-//
-//    $response = curl_exec($ch);
-//
-//    curl_close ($ch);
-//    dd($response);
-//
-//});
+Route::get('test-sms', function () {
+
+    $username = "kap.ashraful";
+    $hash = "46f96dd0ec093837a0c056993d088e26";
+    $user_phone = '+8801677242853';
+    $message = 'Hello From AlphaBiz';
+
+    $params = array('app'=>'ws', 'u'=>$username, 'h'=>$hash, 'op'=>'pv', 'unicode'=>'1','to'=>$user_phone, 'msg'=>$message);
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "http://alphasms.biz/index.php?".http_build_query($params, "", "&"));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type:application/json", "Accept:application/json"));
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+    $response = curl_exec($ch);
+
+    curl_close ($ch);
+    dd($response);
+
+});
 
 //login
 Route::group(['namespace'=>'Admin', 'prefix'=>'admin'],function(){

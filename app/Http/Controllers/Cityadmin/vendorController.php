@@ -179,7 +179,7 @@ class vendorController extends Controller
        else{
         $new_pass=Hash::make($password);
         $insert = DB::table('vendor')
-                  ->insertGetId(['cityadmin_id'=>$cityadmin_id,'vendor_name'=>$vendor_name,'vendor_logo'=>$vendor_image,'vendor_email'=> $vendor_email,'vendor_phone'=> $vendor_phone, 'vendor_pass'=>$new_pass,'vendor_loc'=>$address,'lat'=>$lat,'lng'=>$lng,'opening_time'=>$opening_time, 'closing_time'=>$closing_time,'owner'=>$owner, 'created_at'=>$created_at,'comission'=>$discount,'vendor_category_id'=>$vendor_category_id,'delivery_range'=>$range,'ui_type'=>$ui_type,'online_status'=>'ON']);
+                  ->insertGetId(['cityadmin_id'=>$cityadmin_id,'vendor_name'=>$vendor_name,'vendor_logo'=>$vendor_image,'vendor_email'=> $vendor_email,'vendor_phone'=> $vendor_phone, 'vendor_pass'=>$new_pass,'vendor_loc'=>$address,'lat'=>$lat,'lng'=>$lng,'opening_time'=>$opening_time, 'closing_time'=>$closing_time,'owner'=>$owner, 'created_at'=>$created_at,'comission'=>$discount,'vendor_category_id'=>$vendor_category_id,'delivery_range'=>$range,'ui_type'=>$ui_type,'online_status'=>'on']);
                 
     
         $time = DB::table('time_slot')->insert(['vendor_id'=>$insert,'open_hour'=>$opening_time,'close_hour'=>$closing_time,'time_slot'=>60]); 
