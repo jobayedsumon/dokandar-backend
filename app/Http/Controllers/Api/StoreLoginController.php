@@ -224,12 +224,12 @@ class StoreLoginController extends Controller
 
         if($profile){
                                     
-                 $message = array('status'=>'1', 'message'=>'Store Status', 'data'=>[$profile]);
+                 $message = array('status'=>1, 'message'=>'Store Status', 'data'=>[$profile]);
                  return $message;
      
          }
          else{
-             $message = array('status'=>'0', 'message'=>'Oops Something Went Wrong ');
+             $message = array('status'=>0, 'message'=>'Oops Something Went Wrong ');
              return $message;
          }
 
