@@ -28,14 +28,7 @@ class StoreLoginController extends Controller
               ->first();
         if($smsby->status==1){      
         // check for otp verify
-    	if($checkUser && $checkUser->phone_verified==1){
-    		$message = array('status'=>'1', 'message'=>'You Already register', 'data'=>[]);
-            return $message;
-        }
-          ///////if phone not verified/////	
-    	
-	elseif($checkUser && $checkUser->phone_verified==0){
-                     
+    	if($checkUser){
                          
              $chars = "0123456789";
              $otpval = "";

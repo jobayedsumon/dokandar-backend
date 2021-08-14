@@ -39,17 +39,8 @@ class DriverloginController extends Controller
               ->first();
         if($smsby->status==1){      
         // check for otp verify
-    	if($checkUser && $checkUser->phone_verify==1){
-    		$message = array('status'=>'1', 'message'=>'You Already register', 'data'=>[]);
-            return $message;
-    	}
-    	
-    ///////if phone not verified/////	
-    	
-	elseif($checkUser && $checkUser->phone_verify==0){
+    	if($checkUser){
 
-    						
-    						
     			$chars = "0123456789";
                 $otpval = "";
                 for ($i = 0; $i < 4; $i++){

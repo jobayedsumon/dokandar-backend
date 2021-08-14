@@ -122,11 +122,7 @@ class UserController extends Controller
     						'sms'=> '1',
     						'app'=> '1',
     						'email'=> '1']);
-    						
-    						
-    		
-                
-                
+
                 $otpmsg = $this->otpmsg($otpval,$user_phone);
                 
                 $updateOtp = DB::table('tbl_user')
