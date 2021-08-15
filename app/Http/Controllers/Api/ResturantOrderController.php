@@ -240,7 +240,7 @@ class ResturantOrderController extends Controller
         $qty[]= $p->quantity;
         $p_name[] = $p->product_name."(".$p->quantity.$p->unit.")*".$order_qty;
         $prod_name = implode(',',$p_name);
-        $addon_name[]= $p->addon_name;
+        $addon_name[]= (int) $p->addon_name;
         $addon_name = implode(',',$addon_name);
         }
          $charge = 0;
