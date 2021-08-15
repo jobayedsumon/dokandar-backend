@@ -1013,6 +1013,10 @@ Route::group(['prefix'=>'api','namespace'=>'Api'],function(){
     Route::post('paymentvia', 'paymentController@payment_mode');
     //deal products
     Route::post('dealproduct', 'OrderController@dealproduct');
+
+    //order by photo
+    Route::post('orderlist', 'Order_by_ImageController@orderlist');
+    Route::post('venodr_image_order', 'Order_by_ImageController@venodr_image_order');
     
     
    // store
