@@ -376,6 +376,7 @@ class cityadminController extends Controller
       
                 );
                }
+
                Excel::create('commission', function($excel) use ($orders_array){
                  $excel->setTitle('commission');
                  $excel->sheet('commission', function($sheet) use ($orders_array){

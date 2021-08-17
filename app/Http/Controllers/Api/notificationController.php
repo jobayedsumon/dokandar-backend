@@ -15,7 +15,7 @@ class notificationController extends Controller
         $user = $request->user_id;
         $notifyby = DB::table('user_notification')
                 ->where('user_id',$user)
-                ->orderBy('noti_id')
+                ->orderBy('created_at', 'desc')
                 ->get();
         
          if($notifyby){

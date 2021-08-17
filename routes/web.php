@@ -762,9 +762,29 @@ Route::group(['namespace'=>'Pharmacy', 'prefix'=>'pharmacy'],function(){
 	       //for notification
      Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('pharmacy-vendor-notification');
     Route::get('pharmacycityadmindelivery_boy','delivery_boyController@pharmacycityadmindelivery_boy')->name('pharmacycityadmindelivery_boy');
-    
-        
-    }); 
+
+    //NEW ROUTES
+    Route::get('parmacy_order_list','Pharmacy_Order_By_ImageController@parmacy_order_list')->name('parmacy_order_list');
+
+
+    Route::post('admin/reject/orderlist/{id}','Pharmacy_Order_By_ImageController@rejectorder')->name('admin_reject_orderphoto');
+
+
+    Route::get('store/makeorder/{id}','Pharmacy_Order_By_ImageController@pharmacy_sel_product')->name('pharmacy_sel_product');
+    Route::post('list/product/added/', 'Pharmacy_Order_By_ImageController@pharmacy_added_product')->name('pharmacy_added_product');
+
+    Route::get('list/product/delete_from_cart/{id}', 'Pharmacy_Order_By_ImageController@pharmacy_delete_product')->name('pharmacy_delete_product');
+
+    Route::post('list/product/add_qty/{id}', 'Pharmacy_Order_By_ImageController@pharmacy_add_qty')->name('pharmacy_add_qty');
+
+    Route::post('reject/order/{id}','Pharmacy_Order_By_ImageController@pharmacy_rejectorder')->name('pharmacy_rejectorder');
+
+    Route::post('order/processed/{ord_id}','Pharmacy_Order_By_ImageController@parmacy_checkout')->name('parmacy_checkout');
+
+
+
+
+});
 	
 /////////////////////////////////////////////////	
 /////////////for city admin//////////////////////
@@ -1014,6 +1034,7 @@ Route::group(['prefix'=>'api','namespace'=>'Api'],function(){
     //deal products
     Route::post('dealproduct', 'OrderController@dealproduct');
 
+    //NEW ROUTES
     //order by photo
     Route::post('orderlist', 'Order_by_ImageController@orderlist');
     Route::post('venodr_image_order', 'Order_by_ImageController@venodr_image_order');

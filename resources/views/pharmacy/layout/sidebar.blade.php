@@ -88,6 +88,12 @@
 					<div class="menu-divider"></div>
 					<div class="menu-header">Vendor | Orders | Comission</div>
 					<div class="menu-item">
+						<a href="{{route('parmacy_order_list')}}" class="menu-link">
+							<span class="menu-icon"><i class="fa fa-envelope"></i></span>
+							<span class="menu-text"> {{ __('Order_by_Image')}}</span>
+						</a>
+					</div>
+					<div class="menu-item">
 						<a href="{{route('today_order_pharmacy')}}" class="menu-link">
 							<span class="menu-icon"><i class="fa fa-cart-plus"></i></span>
 							<span class="menu-text">Today | Order</span>

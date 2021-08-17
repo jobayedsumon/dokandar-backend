@@ -126,4 +126,18 @@ trait SendMail {
             
         return "send";
      }
+
+    public function photoorderplacedMail ($cart_id,$prod_name,$price2,$delivery_date,$user_email,$user_name) {
+        $app_name = "GoMarket";
+
+        $data = array('to' => $user_email, 'from' => 'noreply@gomarket.in', 'to-name'=>$user_name, 'from-name' => $app_name);
+
+        Mail::send('admin.mail.photoorderplaced', compact('cart_id', 'prod_name', 'price2', 'delivery_date'), function ($m) use ($data){
+            $m->from($data['from'], $data['from-name']);
+            $m->to($data['to'], $data['to-name'])->subject("Order Successfully Placed");
+        });
+
+        return "send";
+    }
+
 }
