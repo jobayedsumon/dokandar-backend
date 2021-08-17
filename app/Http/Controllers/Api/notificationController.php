@@ -13,6 +13,10 @@ class notificationController extends Controller
    public function notificationlist(Request $request)
     {  
         $user = $request->user_id;
+        DB::table('user_notification')
+            ->where('user_id',$user)
+            ->where('created_at', '<', date("Y-m-d H:i:s", strtotime('-48 hours')))
+            ->delete();
         $notifyby = DB::table('user_notification')
                 ->where('user_id',$user)
                 ->orderBy('created_at', 'desc')

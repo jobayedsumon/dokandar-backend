@@ -395,7 +395,7 @@ public function parmacy_checkout(Request $request)
                }
              if($email->app ==1){
                   $notification_title = "Hey ".$user_name.", Your Order is Placed";
-                $notification_text = "Order Successfully Placed: Your order id #".$cart_id." contains of " .$prod_name." of price rs ".$price2. " is placed Successfully.You can expect your item(s) will be delivered on ".$delivery_date;
+                $notification_text = "Order Successfully Placed: Your order id #".$cart_id." contains of " .$prod_name." of price bdt ".$price2. " is placed Successfully.You can expect your item(s) will be delivered on ".$delivery_date;
                 
                 $date = date('d-m-Y');
         
@@ -467,7 +467,7 @@ public function parmacy_checkout(Request $request)
                         
                 $store_n = $getD->vendor_name;        
                 $notification_title = "Hey ".$store_n.", You Got a New Order";
-                $notification_text = "Order with cart id #".$cart_id." contains of " .$prod_name." of price rs ".$price2. " has been created successfully. It will have to delivered on ".$delivery_date.".";
+                $notification_text = "Order with cart id #".$cart_id." contains of " .$prod_name." of price bdt ".$price2. " has been created successfully. It will have to delivered on ".$delivery_date.".";
                 
                 $date = date('d-m-Y');
                 $getUser = DB::table('vendor')
