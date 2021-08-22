@@ -632,10 +632,14 @@ use SendMail;
                 ->select(DB::raw('SUM(amount) as sum') ,DB::raw('count(no_of_orders) as count'))
                 ->where('delivery_boy_id',$delivery_boy_id)
                 ->first();
+
+        $comission = DB::table('delivery_boy_comission')
+            ->where('delivery_boy_id', $delivery_boy_id)
+            ->sum('comission_price');
     
             if($cash)
             {
-                $message = array('status'=>'1', 'message'=>'Total Cash', 'data'=>$cash);
+                $message = array('status'=>'1', 'message'=>'Total Cash', 'data'=>$cash, 'comission'=>$comission);
         	    return $message;
             }
             else
