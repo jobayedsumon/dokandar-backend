@@ -890,7 +890,7 @@ Route::group(['namespace'=>'Cityadmin', 'prefix'=>'cityadmin'],function(){
         
        Route::get('cdelivery_boy_comission','delivery_boy_comissionController@cdelivery_boy_comission')->name('cdelivery_boy_comission');
          Route::post('cityadminsearchcomission','delivery_boy_comissionController@cityadminsearchcomission')->name('cityadminsearchcomission');
-         Route::get('cityadminallexcelgenerator','delivery_boy_comissionController@cityadminallexcelgenerator')->name('cityadminallexcelgenerator');      
+         Route::get('cityadminallexcelgenerator','delivery_boy_comissionController@cityadminallexcelgenerator')->name('cityadminallexcelgenerator');
          Route::get('cityadminexcelgenerator/{startdate}/{enddate}/{delivery_boy_id}', 'delivery_boy_comissionController@cityadminexcelgenerator')->name('cityadminexcelgenerator');
         
           Route::get('vendor','vendorController@vendor')->name('vendor');

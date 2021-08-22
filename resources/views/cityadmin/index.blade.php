@@ -85,7 +85,7 @@
                                     <hr class="hr-transparent bg-white-transparent-2 mt-3 mb-3" />
                                     
                                     <div class="mt-3 mb-2">
-                                        <a href="#" class="btn btn-yellow btn-rounded btn-sm pl-5 pr-5 pt-2 pb-2 fs-14px font-weight-600"><i class="fa fa-wallet mr-2 ml-n2"></i>Download Report</a>
+                                        <a href="{{ route('cityadminallexcelgenerator') }}" class="btn btn-yellow btn-rounded btn-sm pl-5 pr-5 pt-2 pb-2 fs-14px font-weight-600"><i class="fa fa-wallet mr-2 ml-n2"></i>Download Report</a>
                                     </div>
                                     
                                 </div>

@@ -36,7 +36,7 @@ class StoreOrderController extends Controller
                             ->where('orders.order_status','!=', 'Completed')
                              ->whereDate('orders.delivery_date', $currentDate)
 
-    	                    ->orderBy('user_id')
+    	                    ->orderBy('orders.order_id')
                            ->get();
                 
                            if(count($todayorder)>0){
@@ -86,7 +86,7 @@ class StoreOrderController extends Controller
            ->where('orders.order_status','!=', 'Cancelled')
             ->where('orders.ui_type','=', '1')
             ->where('orders.order_status','!=', 'Completed')
-           ->orderBy('user_id')
+           ->orderBy('orders.order_id')
            ->get();  
 
            if(count($nextdayorder)>0){
@@ -132,7 +132,7 @@ class StoreOrderController extends Controller
               ->where('orders.order_status',"Completed")
                ->where('orders.ui_type','=', '1')
              ->where('orders.vendor_id', $vendor_id)
-             ->orderBy('user_id')
+             ->orderBy('orders.order_id')
              ->get();
             
             if(count($completeorder)>0){

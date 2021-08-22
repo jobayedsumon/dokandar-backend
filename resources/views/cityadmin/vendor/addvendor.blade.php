@@ -195,7 +195,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                      <label for="exampleInputName1">Owner Name</label>
+                      <label for="exampleInputName1">Vendor Email</label>
                       <input type="text" class="form-control" id="exampleInputName1" name="owner_name" placeholder="Enter vendor Email">
                     </div>
                     <div class="form-group">

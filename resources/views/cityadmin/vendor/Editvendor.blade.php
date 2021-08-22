@@ -199,11 +199,11 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputName1">Opening Time</label>
-                      <input type="time" class="form-control" name="opening_time" value="{{$vendor->opening_time}}">
+                      <input type="time" class="form-control" name="opening_time" value="{{$vendor->opening_time}}" required>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputName1">Closing Time</label>
-                      <input type="time" class="form-control" name="closing_time" value="{{$vendor->closing_time}}">
+                      <input type="time" class="form-control" name="closing_time" value="{{$vendor->closing_time}}" required>
                     </div>
                    
                       <div class="form-group">

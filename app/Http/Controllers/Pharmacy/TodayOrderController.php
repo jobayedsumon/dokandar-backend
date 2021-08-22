@@ -36,7 +36,7 @@ class TodayOrderController extends Controller
     	           
 							->where('orders.vendor_id', $vendor_id)
 							->whereDate('orders.delivery_date', $currentDate)
-    	                    ->orderBy('user_id')
+    	                    ->orderBy('orders.order_id')
     	                    ->get(); 
     	
     	  $details  =   DB::table('orders')
@@ -115,7 +115,7 @@ class TodayOrderController extends Controller
 						
 								->where('orders.vendor_id', $vendor_id)
 								->whereDate('orders.delivery_date', $end)
-								->orderBy('user_id')
+								->orderBy('orders.order_id')
 								->get(); 
     	
     	  $details  =    DB::table('orders')
@@ -193,7 +193,7 @@ public function pharmacy_complete_order(Request $request)
     	           
 							->where('orders.vendor_id', $vendor_id)
 							->whereDate('orders.delivery_date', $currentDate)
-    	                    ->orderBy('user_id')
+    	                    ->orderBy('orders.order_id')
     	                    ->get(); 
     	
     	  $details  =   DB::table('orders')

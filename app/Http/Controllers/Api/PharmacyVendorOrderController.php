@@ -37,7 +37,7 @@ class PharmacyVendorOrderController extends Controller
                             ->where('orders.order_status','!=', 'Completed')
                              ->whereDate('orders.delivery_date', $currentDate)
 
-    	                    ->orderBy('user_id')
+    	                    ->orderBy('orders.order_id')
                            ->get();
                 
                            if(count($todayorder)>0){
@@ -86,7 +86,7 @@ class PharmacyVendorOrderController extends Controller
               ->where('orders.order_status',"Completed")
              ->where('orders.vendor_id', $vendor_id)
              ->where('orders.ui_type','=', '3')
-             ->orderBy('user_id')
+             ->orderBy('orders.order_id')
              ->get();
             
             if(count($completeorder)>0){
