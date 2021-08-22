@@ -74,7 +74,7 @@ use SendMail;
              ->where('orders.vendor_id','!=',0)
              ->where('orders.dboy_id',$delivery_boy_id)
              ->where('orders.delivery_date', $date)
-             ->orderBy('orders.time_slot', 'DESC')->orderBy('orders.order_id', 'DESC')
+             ->orderBy('orders.order_id', 'DESC')
              ->get();
        
        if(count($ord)>0){
@@ -124,7 +124,7 @@ use SendMail;
             ->where('orders.vendor_id','!=',0)
             ->where('orders.dboy_id',$delivery_boy_id)
             ->where('orders.delivery_date', $end)
-            ->orderBy('orders.time_slot', 'DESC')->orderBy('orders.order_id', 'DESC')
+            ->orderBy('orders.order_id', 'DESC')
             ->get();
       
       if(count($ord)>0){
@@ -655,7 +655,7 @@ use SendMail;
              ->where('orders.vendor_id','!=',0)
              ->where('orders.dboy_id',$delivery_boy_id)
              ->where('orders.delivery_date', $date)
-             ->orderBy('orders.time_slot', 'DESC')->orderBy('orders.order_id', 'DESC')
+             ->orderBy('orders.order_id', 'DESC')
              ->count();
              
          if($ord>0)
@@ -682,7 +682,7 @@ use SendMail;
              ->where('orders.vendor_id','!=',0)
              ->where('orders.dboy_id',$delivery_boy_id)
              ->where('orders.delivery_date', $next_date)
-             ->orderBy('orders.time_slot', 'DESC')->orderBy('orders.order_id', 'DESC')
+             ->orderBy('orders.order_id', 'DESC')
              ->count();
              
          if($ord>0)
