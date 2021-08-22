@@ -33,7 +33,7 @@ class TodayOrderController extends Controller
     	                    ->where('order_status','=','Completed')
     	                    
     	                    ->where('vendor.vendor_id', $vendor_id)
-    	                    ->orderBy('orders.order_id')
+    	                    ->orderBy('orders.order_id', 'DESC')
     	                    ->get(); 
     
 

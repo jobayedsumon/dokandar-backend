@@ -264,7 +264,7 @@ class Vendor_orderController extends Controller
     	                     ->where('orders.order_status',"Completed")
                             ->where('orders.payment_status','!=', 'NULL')
     	                    ->where('orders.vendor_id', $id)
-    	                    ->orderBy('orders.order_id')
+    	                    ->orderBy('orders.order_id', 'DESC')
     	                    ->get();
 
 

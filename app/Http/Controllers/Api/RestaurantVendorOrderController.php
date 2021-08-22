@@ -35,7 +35,7 @@ class RestaurantVendorOrderController extends Controller
                             ->where('orders.order_status','!=', 'Completed')
                              ->whereDate('orders.delivery_date', $currentDate)
 
-    	                    ->orderBy('orders.order_id')
+    	                    ->orderBy('orders.order_id', 'DESC')
                            ->get();
                 
                            if(count($todayorder)>0){
@@ -84,7 +84,7 @@ class RestaurantVendorOrderController extends Controller
               ->where('orders.order_status',"Completed")
               ->where('orders.ui_type',2)
              ->where('orders.vendor_id', $vendor_id)
-             ->orderBy('orders.order_id')
+             ->orderBy('orders.order_id', 'DESC')
              ->get();
             
             if(count($completeorder)>0){

@@ -37,7 +37,7 @@ class TodayOrderController extends Controller
     	           
 							->where('orders.vendor_id', $vendor_id)
 							->whereDate('orders.delivery_date', $currentDate)
-    	                    ->orderBy('orders.order_id')
+    	                    ->orderBy('orders.order_id', 'DESC')
     	                    ->get();
 
           $details  =   DB::table('orders')
@@ -116,7 +116,7 @@ class TodayOrderController extends Controller
     	                    ->select('area.area_id','orders.order_id','orders.order_id','orders.user_id','orders.delivery_date','orders.order_date','tbl_user.user_name','orders.dboy_id','orders.delivery_charge', 'orders.total_price','orders.total_products_mrp','orders.delivery_charge','delivery_boy.delivery_boy_name','orders.dboy_id','orders.order_status','orders.cart_id','orders.delivery_date','orders.order_date','user_address.user_number','user_address.user_name','user_address.address','orders.time_slot','orders.delivery_charge','orders.paid_by_wallet','orders.rem_price','orders.price_without_delivery','orders.coupon_discount')
     	                     ->whereDate('orders.delivery_date', $end)
     	                    ->where('vendor.vendor_id', $vendor_id)
-    	                    ->orderBy('orders.order_id')
+    	                    ->orderBy('orders.order_id', 'DESC')
     	                    ->get(); 
     	
     	  $details  =   DB::table('orders')
@@ -195,7 +195,7 @@ public function resturant_complete_order(Request $request)
     	           
 							->where('orders.vendor_id', $vendor_id)
 							->whereDate('orders.delivery_date', $currentDate)
-    	                    ->orderBy('orders.order_id')
+    	                    ->orderBy('orders.order_id', 'DESC')
     	                    ->get();
 
     	  $details  =   DB::table('orders')
