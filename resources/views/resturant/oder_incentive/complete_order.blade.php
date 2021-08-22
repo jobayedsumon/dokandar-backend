@@ -167,7 +167,11 @@
 
                                     <strong>  Delivery Date : </strong>{{$nextdayorders->delivery_date}}
                                     <br />
-                                    <strong>  Time Slot : </strong>{{$nextdayorders->time_slot}}
+                                    @if($nextdayorders->time_slot)
+                                            <strong>  Time Slot : </strong>{{$nextdayorders->time_slot}}
+                                        @else
+                                            <strong>  Order Date : </strong>{{$nextdayorders->order_date}}
+                                        @endif
                                     <br />
                                     </td>
                                     <td  style="width:50%" align="right">

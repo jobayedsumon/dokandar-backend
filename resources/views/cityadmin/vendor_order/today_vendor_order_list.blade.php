@@ -189,7 +189,11 @@
 
                                     <strong>  Delivery Date : </strong>{{$todayorders->delivery_date}}
                                     <br />
+                                    @if($todayorders->time_slot)
                                     <strong>  Time Slot : </strong>{{$todayorders->time_slot}}
+                                        @else
+                                            <strong>  Order Date : </strong>{{$todayorders->order_date}}
+                                        @endif
                                     <br />
                                     </td>
                                     <td  style="width:50%" align="right">
