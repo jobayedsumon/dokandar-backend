@@ -32,7 +32,7 @@ use SendMail;
                  'vendor.lng as vendor_lng','user_address.lat as userlat', 'user_address.lng as userlng',
                  'delivery_boy.lat as dboy_lat', 'delivery_boy.lng as dboy_lng', 'user_address.user_number',
                  'user_address.houseno','user_address.state','user_address.street','user_address.pincode',  DB::raw('SUM(order_details.qty) as total_items'))
-             ->groupBy('orders.order_status','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone',
+             ->groupBy('orders.order_status','orders.order_id','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone',
                  'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price',
                  'orders.payment_status','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone',
                  'orders.time_slot', 'vendor.vendor_name','vendor.vendor_phone','vendor.lat',
@@ -77,7 +77,7 @@ use SendMail;
              ->join('user_address', 'orders.address_id','=','user_address.address_id')
              ->join('delivery_boy', 'orders.dboy_id', '=','delivery_boy.delivery_boy_id')
              ->select('orders.order_status','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone', 'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price','orders.payment_status','orders.payment_method','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone','orders.time_slot', 'vendor.vendor_loc as vendor_address', 'vendor.vendor_name','vendor.vendor_phone','vendor.lat as vendor_lat','vendor.lng as vendor_lng','user_address.lat as userlat', 'user_address.lng as userlng', 'delivery_boy.lat as dboy_lat', 'delivery_boy.lng as dboy_lng', 'user_address.user_number',  'user_address.houseno','user_address.pincode','user_address.houseno','user_address.street','user_address.state')
-             ->groupBy('orders.order_status','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone', 'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price','orders.payment_status','orders.payment_method','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone','orders.time_slot', 'vendor.vendor_loc', 'vendor.vendor_name','vendor.vendor_phone','vendor.lat','vendor.lng','user_address.lat', 'user_address.lng', 'delivery_boy.lat', 'delivery_boy.lng', 'user_address.user_number',  'user_address.houseno','user_address.pincode','user_address.houseno','user_address.street','user_address.state')
+             ->groupBy('orders.order_status','orders.order_id','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone', 'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price','orders.payment_status','orders.payment_method','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone','orders.time_slot', 'vendor.vendor_loc', 'vendor.vendor_name','vendor.vendor_phone','vendor.lat','vendor.lng','user_address.lat', 'user_address.lng', 'delivery_boy.lat', 'delivery_boy.lng', 'user_address.user_number',  'user_address.houseno','user_address.pincode','user_address.houseno','user_address.street','user_address.state')
              ->where('orders.order_status','!=', 'completed')
              ->where('orders.order_status','!=', 'Cancelled')
               ->where('orders.ui_type' , '1')
@@ -124,7 +124,7 @@ use SendMail;
              ->join('user_address', 'orders.address_id','=','user_address.address_id')
              ->join('delivery_boy', 'orders.dboy_id', '=','delivery_boy.delivery_boy_id')
              ->select('orders.order_status','orders.cart_id','tbl_user.user_name', 'tbl_user.user_phone', 'orders.delivery_date', 'orders.total_price','orders.delivery_charge','orders.rem_price','orders.payment_status','orders.payment_method','delivery_boy.delivery_boy_name','delivery_boy.delivery_boy_phone','orders.time_slot', 'vendor.vendor_loc as vendor_address', 'vendor.vendor_name','vendor.vendor_phone','vendor.lat as vendor_lat','vendor.lng as vendor_lng','user_address.lat as userlat', 'user_address.lng as userlng', 'delivery_boy.lat as dboy_lat', 'delivery_boy.lng as dboy_lng', 'user_address.user_number',  'user_address.houseno','user_address.pincode','user_address.houseno','user_address.street','user_address.state')
-             ->groupBy('orders.order_status', 'orders.order_id', 'orders.cart_id','tbl_user.user_name',
+             ->groupBy('orders.order_status','orders.order_id', 'orders.order_id', 'orders.cart_id','tbl_user.user_name',
                  'tbl_user.user_phone', 'orders.delivery_date', 'orders.total_price','orders.delivery_charge',
                  'orders.rem_price','orders.payment_status','orders.payment_method','delivery_boy.delivery_boy_name',
                  'delivery_boy.delivery_boy_phone','orders.time_slot', 'vendor.vendor_loc', 'vendor.vendor_name',
