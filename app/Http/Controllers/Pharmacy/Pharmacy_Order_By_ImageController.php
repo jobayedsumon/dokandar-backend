@@ -391,7 +391,7 @@ public function parmacy_checkout(Request $request)
             $email_status = $email->email;       
             if($email_status == 1){
                    
-                    $codorderplaced = $this->photoorderplacedMail($cart_id,$prod_name,$price2,$delivery_date,$user_email,$user_name);
+                    //$codorderplaced = $this->photoorderplacedMail($cart_id,$prod_name,$price2,$delivery_date,$user_email,$user_name);
                }
              if($email->app ==1){
                   $notification_title = "Hey ".$user_name.", Your Order is Placed";

@@ -459,7 +459,7 @@ class OrderController extends Controller
             if($email_status == 1){
                    
                          
-                    //$orderplaced = $this->orderplacedMail($cart_id,$prod_name,$price2,$delivery_date,$time_slot,$user_email,$user_name);
+                    $orderplaced = $this->orderplacedMail($cart_id,$prod_name,$price2,$delivery_date,$time_slot,$user_email,$user_name);
               }
             if($email->app == 1){
                   $notification_title = "WooHoo! Your Order is Placed";
