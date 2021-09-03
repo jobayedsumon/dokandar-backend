@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'per'=>\App\Http\Middleware\Permission::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'optimizeImages' => \Spatie\LaravelImageOptimizer\Middlewares\OptimizeImages::class,
     ];
 }

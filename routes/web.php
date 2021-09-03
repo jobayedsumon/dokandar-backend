@@ -28,8 +28,12 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'],function(){
   Route::get('/', 'LoginController@login')->name('login');
   Route::post('/checklogin', 'LoginController@checkAdminLogin')->name('check-admin-login');
  });
- 
-      Route::group(['namespace'=>'Admin','middleware'=>'per', 'prefix'=>'admin'],function(){
+
+
+Route::middleware('optimizeImages')->group(function () {
+
+//ADMIN
+Route::group(['namespace'=>'Admin','middleware'=>'per', 'prefix'=>'admin'],function(){
       //Meenu
      
       /// for home
@@ -272,9 +276,6 @@ Route::group(['namespace'=>'Admin', 'prefix'=>'admin'],function(){
         Route::get('vendorexcelgenerator/{startdate}/{enddate}/{vendor_id}', 'cityadminController@vendorexcelgenerator')->name('vendorexcelgenerator');
   
 	});
-
-	
-
 
 
 /////////////////////////////////////////////////	
@@ -795,7 +796,8 @@ Route::group(['namespace'=>'Cityadmin', 'prefix'=>'cityadmin'],function(){
     Route::post('/checklogin', 'LoginController@checkcityadminLogin')->name('checkcityadmin-login');
   
 });
-      Route::group(['namespace'=>'Cityadmin', 'prefix'=>'cityadmin'],function(){	
+
+Route::group(['namespace'=>'Cityadmin', 'prefix'=>'cityadmin'],function(){
     /// for cityadmin home
       Route::get('index', 'HomeController@cityadminIndex')->name('cityadmin-index');
 
@@ -1514,6 +1516,8 @@ Route::group(['namespace'=>'Parcel', 'prefix'=>'parcel'],function(){
 	       //for notification
      Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('parcel-vendor-notification');
     Route::get('parcelcityadmindelivery_boy','delivery_boyController@parcelcityadmindelivery_boy')->name('parcelcityadmindelivery_boy');
+
+});
 
 });
 
