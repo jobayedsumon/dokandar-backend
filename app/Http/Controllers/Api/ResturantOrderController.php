@@ -722,6 +722,7 @@ class ResturantOrderController extends Controller
               ->where('orders.user_id',$user_id)
               ->where('orders.order_status', 'Completed')
               ->where('orders.ui_type', '2')
+          ->orderBy('orders.order_id', 'DESC')
               ->get();
       
       if(count($completeds)>0){

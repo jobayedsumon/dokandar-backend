@@ -732,6 +732,7 @@ class PharmacyOrderController extends Controller
               ->where('orders.user_id',$user_id)
               ->where('orders.order_status', 'Completed')
               ->where('orders.ui_type', '3')
+          ->orderBy('orders.order_id', 'DESC')
               ->get();
       
       if(count($completeds)>0){
