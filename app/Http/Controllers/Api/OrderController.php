@@ -759,6 +759,7 @@ class OrderController extends Controller
               ->where('orders.user_id',$user_id)
               ->where('order_status', 'Completed')
               ->where('orders.ui_type', '1')
+           ->orderBy('orders.order_id', 'DESC')
                ->get();
               
       
