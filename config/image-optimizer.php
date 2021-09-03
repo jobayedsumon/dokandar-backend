@@ -14,18 +14,20 @@ return [
     'optimizers' => [
 
         Jpegoptim::class => [
-            '-m50', // set maximum quality to 85%
+            '-m10', // set maximum quality to 85%
             '--strip-all',  // this strips out all text information such as comments and EXIF data
             '--all-progressive',  // this will make sure the resulting image is a progressive one
         ],
 
         Pngquant::class => [
+            '--quality=1-1',
             '--force', // required parameter for this package
         ],
 
         Optipng::class => [
             '-i0', // this will result in a non-interlaced, progressive scanned image
             '-o2',  // this set the optimization level to two (multiple IDAT compression trials)
+            '-strip all',
             '-quiet', // required parameter for this package
         ],
 
