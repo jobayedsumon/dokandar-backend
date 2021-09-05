@@ -169,6 +169,8 @@ return [
          * Package Service Providers...
          */
 
+        'Intervention\Image\ImageServiceProvider',
+
         /*
          * Application Service Providers...
          */
@@ -232,6 +234,7 @@ return [
 	   // 'Form'      => Illuminate\Html\FormFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         // 'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+        'Image' => 'Intervention\Image\Facades\Image'
 
     ],
 
