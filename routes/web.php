@@ -292,10 +292,10 @@ Route::group(['namespace'=>'Vendor', 'prefix'=>'grocery'],function(){
       Route::post('update/profile/{id}','ProfileController@vendorUpdateProfile')->name('vendor-update');
       Route::get('logout','ProfileController@vendorLogout')->name('vendor-logout');
 
-        Route::get('today_order_vendor','TodayOrderController@today_order_vendor')->name('today_order_vendor');
-        Route::get('next_day','TodayOrderController@next_day')->name('next_day_order_vendor');
-        Route::get('complete_order','TodayOrderController@complete_order')->name('complete_order');
-        Route::post('assigned_order', 'TodayOrderController@assigned_order')->name('assigned_order');
+        Route::get('today_order_vendor','TodayOrderControllerVendor@today_order_vendor')->name('today_order_vendor');
+        Route::get('next_day','TodayOrderControllerVendor@next_day')->name('next_day_order_vendor');
+        Route::get('complete_order','TodayOrderControllerVendor@complete_order')->name('complete_order');
+        Route::post('assigned_order', 'TodayOrderControllerVendor@assigned_order')->name('assigned_order');
         Route::post('assigned_vendor_order', 'DispatchvendorController@assignedvendor')->name('assigned_vendor_order');
            
         Route::get('incentive_order', 'Incentive_orderController@incentive_order')->name('incentive_order');
@@ -414,7 +414,7 @@ Route::group(['namespace'=>'Vendor', 'prefix'=>'grocery'],function(){
          
          // for order details
  	 
-         Route::get('details','TodayOrderController@details')->name('details');
+         Route::get('details','TodayOrderControllerVendor@details')->name('details');
          
         Route::get('inventoryvendor', 'inventoryController@inventoryvendor')->name('inventoryvendor');
         Route::post('paycustomervendor/{order_complain_id}', 'inventoryController@paycustomervendor')->name('paycustomervendor');
@@ -432,9 +432,9 @@ Route::group(['namespace'=>'Vendor', 'prefix'=>'grocery'],function(){
       Route::get('allexceldownload','delivery_boy_comissionController@allexceldownload')->name('allexceldownload');      
       Route::get('exceldownload/{startdate}/{enddate}', 'delivery_boy_comissionController@exceldownload')->name('exceldownload');
 	            
-	     Route::post('searchstock','TodayOrderController@searchstock')->name('searchstock');
-	     Route::get('low_stock','TodayOrderController@low_stock')->name('low_stock');
-	     Route::post('update_stock','TodayOrderController@update_stock')->name('update_stock');
+	     Route::post('searchstock','TodayOrderControllerVendor@searchstock')->name('searchstock');
+	     Route::get('low_stock','TodayOrderControllerVendor@low_stock')->name('low_stock');
+	     Route::post('update_stock','TodayOrderControllerVendor@update_stock')->name('update_stock');
 	     
 	       //for notification
      Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('vendor-notification');
@@ -595,9 +595,8 @@ Route::group(['namespace'=>'Resturant', 'prefix'=>'restaurant'],function(){
       Route::get('resturantallexceldownload','delivery_boy_comissionController@resturantallexceldownload')->name('resturantallexceldownload');      
       Route::get('resturantexceldownload/{startdate}/{enddate}', 'delivery_boy_comissionController@resturantexceldownload')->name('resturantexceldownload');
 	            
-	   //  Route::post('searchstock','TodayOrderController@searchstock')->name('searchstock');
-	   //  Route::get('low_stock','TodayOrderController@low_stock')->name('low_stock');
-	   //  Route::post('update_stock','TodayOrderController@update_stock')->name('update_stock');
+
+
 	     
 	       //for notification
      Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('restaurant-vendor-notification');
@@ -756,9 +755,7 @@ Route::group(['namespace'=>'Pharmacy', 'prefix'=>'pharmacy'],function(){
       Route::get('pharmacyallexceldownload','delivery_boy_comissionController@pharmacyallexceldownload')->name('pharmacyallexceldownload');      
       Route::get('pharmacyexceldownload/{startdate}/{enddate}', 'delivery_boy_comissionController@pharmacyexceldownload')->name('pharmacyexceldownload');
 	            
-	   //  Route::post('searchstock','TodayOrderController@searchstock')->name('searchstock');
-	   //  Route::get('low_stock','TodayOrderController@low_stock')->name('low_stock');
-	   //  Route::post('update_stock','TodayOrderController@update_stock')->name('update_stock');
+
 	     
 	       //for notification
      Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('pharmacy-vendor-notification');
@@ -1509,9 +1506,7 @@ Route::group(['namespace'=>'Parcel', 'prefix'=>'parcel'],function(){
       Route::get('resturantallexceldownload','delivery_boy_comissionController@resturantallexceldownload')->name('parcelallexceldownload');      
       Route::get('resturantexceldownload/{startdate}/{enddate}', 'delivery_boy_comissionController@resturantexceldownload')->name('parcelexceldownload');
 	            
-	   //  Route::post('searchstock','TodayOrderController@searchstock')->name('searchstock');
-	   //  Route::get('low_stock','TodayOrderController@low_stock')->name('low_stock');
-	   //  Route::post('update_stock','TodayOrderController@update_stock')->name('update_stock');
+
 	     
 	       //for notification
      Route::get('vendor_notification', 'NotificationController@vendor_notification')->name('parcel-vendor-notification');

@@ -10,7 +10,7 @@ use Session;
 use Carbon\Carbon;
 use App\Traits\SendSms;
 
-class TodayOrderController extends Controller
+class TodayOrderControllerVendor extends Controller
 {
     use SendSms;
    public function today_order_vendor(Request $request)
@@ -471,6 +471,7 @@ public function complete_order(Request $request)
   
   
 	  }
+
 	  public function getSearch($productname,$id)
   {
 	  if($productname!=null && $id!=null){
