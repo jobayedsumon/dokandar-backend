@@ -21,13 +21,12 @@ class UserController extends Controller
                 'user_name' => 'required',
                 'user_email' => 'required|email',
                 'user_phone' => 'required',
-                'user_password' => 'required'
+
             ],
             [
                 'user_name.required' => 'Enter Name...',
                 'user_email.required' => 'Enter email...',
-                'user_phone.required' => 'Enter Mobile...',
-                'user_password.required' => 'Enter password...',
+                'user_phone.required' => 'Enter Mobile...'
             ]
         );
     	$user_name = $request->user_name;
