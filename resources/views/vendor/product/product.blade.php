@@ -76,13 +76,15 @@
                        
           </tbody>
         </table>
+
+          {!! $product->links("pagination::bootstrap-4") !!}
       </div>
     </div>
   </div>
 
 </div>
 <!-- /.container-fluid -->
-</div>
+
 </div>
 @foreach($product as $products)
 <!-- Modal -->
