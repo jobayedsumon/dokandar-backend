@@ -75,7 +75,6 @@
                                 @php $i++; @endphp
                             @endforeach
 
-                            {{ $subcat->links() }}
 
                         @else
                             <tr>
@@ -85,13 +84,16 @@
 
                         </tbody>
                     </table>
+
+                    {!! $subcat->links("pagination::bootstrap-4") !!}
+
                 </div>
             </div>
         </div>
 
     </div>
     <!-- /.container-fluid -->
-    </div>
+
     </div>
     @foreach($subcat as $subcats)
         <!-- Modal -->
