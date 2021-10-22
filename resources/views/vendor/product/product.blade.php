@@ -77,7 +77,7 @@
           </tbody>
         </table>
 
-          {!! $product->links("pagination::bootstrap-4") !!}
+          {!! method_exists($product, 'links') ? $product->links("pagination::bootstrap-4") : '' !!}
       </div>
     </div>
   </div>
