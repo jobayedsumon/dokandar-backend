@@ -22,7 +22,7 @@ class ProductController extends Controller
                  ->join('subcat','product.subcat_id', '=', 'subcat.subcat_id')
                  ->join('tbl_category','subcat.category_id', '=', 'tbl_category.category_id')
                  ->where('tbl_category.vendor_id', $vendor->vendor_id)
-                ->get();
+                ->paginate(10);
         $currency =  DB::table('currency')
                ->select('currency_sign')
                 ->paginate(10);         
