@@ -49,7 +49,7 @@ use SendMail;
     	                 ->get();
                   
         
-        $data[]=array('user_address'=>$ords->houseno.','.$ords->pincode.','.$ords->state.','.$ords->street ,'order_status'=>$ords->order_status,'vendor_name'=>$ords->vendor_name, 'vendor_lat'=>$ords->vendor_lat, 'vendor_lng'=>$ords->vendor_lng,'user_lat'=>$ords->userlat, 'user_lng'=>$ords->userlng, 'dboy_lat'=>$ords->dboy_lat, 'dboy_lng'=>$ords->dboy_lng, 'cart_id'=>$cart_id,'user_name'=>$ords->user_name, 'user_phone'=>$ords->user_phone, 'remaining_price'=>$ords->rem_price,'delivery_boy_name'=>$ords->delivery_boy_name,'delivery_boy_phone'=>$ords->delivery_boy_phone,'delivery_date'=>$ords->delivery_date,'time_slot'=>$ords->time_slot,'order_details'=>$details,'addons'=>$aadons); 
+        $data[]=array('user_address'=>$ords->houseno.','.$ords->pincode.','.$ords->state.','.$ords->street ,'order_status'=>$ords->order_status,'vendor_name'=>$ords->vendor_name, 'vendor_lat'=>$ords->vendor_lat, 'vendor_phone'=>$ords->vendor_phone, 'vendor_lng'=>$ords->vendor_lng,'user_lat'=>$ords->userlat, 'user_lng'=>$ords->userlng, 'dboy_lat'=>$ords->dboy_lat, 'dboy_lng'=>$ords->dboy_lng, 'cart_id'=>$cart_id,'user_name'=>$ords->user_name, 'user_phone'=>$ords->user_phone, 'remaining_price'=>$ords->rem_price,'delivery_boy_name'=>$ords->delivery_boy_name,'delivery_boy_phone'=>$ords->delivery_boy_phone,'delivery_date'=>$ords->delivery_date,'time_slot'=>$ords->time_slot,'order_details'=>$details,'addons'=>$aadons);
         }
         }
         else{
@@ -97,7 +97,7 @@ use SendMail;
     	                 ->get();
                   
         
-        $data[]=array('payment_method'=>$ords->payment_method, 'payment_status'=>$ords->payment_status,'user_address'=>$ords->houseno.','.$ords->street.','.$ords->pincode.','.$ords->state ,'order_status'=>$ords->order_status,'vendor_name'=>$ords->vendor_name, 'vendor_lat'=>$ords->vendor_lat, 'vendor_lng'=>$ords->vendor_lng, 'vendor_address'=>$ords->vendor_address, 'user_lat'=>$ords->userlat, 'user_lng'=>$ords->userlng, 'dboy_lat'=>$ords->dboy_lat, 'dboy_lng'=>$ords->dboy_lng, 'cart_id'=>$cart_id,'user_name'=>$ords->user_name, 'user_phone'=>$ords->user_phone, 'remaining_price'=>$ords->rem_price,'delivery_boy_name'=>$ords->delivery_boy_name,'delivery_boy_phone'=>$ords->delivery_boy_phone,'delivery_date'=>$ords->delivery_date,'time_slot'=>$ords->time_slot,'order_details'=>$description,'addons'=>$aadons); 
+        $data[]=array('payment_method'=>$ords->payment_method, 'payment_status'=>$ords->payment_status,'user_address'=>$ords->houseno.','.$ords->street.','.$ords->pincode.','.$ords->state ,'order_status'=>$ords->order_status,'vendor_name'=>$ords->vendor_name, 'vendor_lat'=>$ords->vendor_lat, 'vendor_phone'=>$ords->vendor_phone, 'vendor_lng'=>$ords->vendor_lng, 'vendor_address'=>$ords->vendor_address, 'user_lat'=>$ords->userlat, 'user_lng'=>$ords->userlng, 'dboy_lat'=>$ords->dboy_lat, 'dboy_lng'=>$ords->dboy_lng, 'cart_id'=>$cart_id,'user_name'=>$ords->user_name, 'user_phone'=>$ords->user_phone, 'remaining_price'=>$ords->rem_price,'delivery_boy_name'=>$ords->delivery_boy_name,'delivery_boy_phone'=>$ords->delivery_boy_phone,'delivery_date'=>$ords->delivery_date,'time_slot'=>$ords->time_slot,'order_details'=>$description,'addons'=>$aadons);
         }
         }
         else{
