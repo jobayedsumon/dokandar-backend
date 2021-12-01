@@ -34,22 +34,8 @@ trait SendSms {
     
      public function otpmsg($otpval,$user_phone) 
      {
-         $username = "kap.ashraful";
-         $hash = "46f96dd0ec093837a0c056993d088e26";
          $message = "Your Dokandar.xyz OTP is: ".$otpval.".\nNote: Please DO NOT SHARE this OTP with anyone.";
-
-         $params = array('app'=>'ws', 'u'=>$username, 'h'=>$hash, 'op'=>'pv', 'unicode'=>'1','to'=>$user_phone, 'msg'=>$message);
-
-         $ch = curl_init();
-         curl_setopt($ch, CURLOPT_URL, "http://alphasms.biz/index.php?".http_build_query($params, "", "&"));
-         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type:application/json", "Accept:application/json"));
-         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-
-         $response = curl_exec($ch);
-
-         curl_close ($ch);
-
+         $this->send_msg($message, $user_phone);
     }
 
     public function otpmsg_old($otpval,$user_phone)
@@ -128,15 +114,13 @@ trait SendSms {
         }
     }
 
-    public function send_msg($message, $user_phone)
+    public static function send_msg($message, $user_phone)
     {
-        $username = "kap.ashraful";
-        $hash = "46f96dd0ec093837a0c056993d088e26";
-
-        $params = array('app'=>'ws', 'u'=>$username, 'h'=>$hash, 'op'=>'pv', 'unicode'=>'1','to'=>$user_phone, 'msg'=>$message);
+        $api_key = "mpF1FwAgbkTRd2G7B6gNT9bZsZM5KWogqzHjoX7z";
+        $params = array('api_key'=>$api_key,'to'=>$user_phone, 'msg'=>$message);
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://alphasms.biz/index.php?".http_build_query($params, "", "&"));
+        curl_setopt($ch, CURLOPT_URL, "https://api.sms.net.bd/sendsms?".http_build_query($params, "", "&"));
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type:application/json", "Accept:application/json"));
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
