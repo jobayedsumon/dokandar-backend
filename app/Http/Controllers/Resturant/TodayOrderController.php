@@ -27,11 +27,11 @@ class TodayOrderController extends Controller
     			
     	 $vendor_id = $vendor->vendor_id;			
     	  $todayorder  =   DB::table('orders')
-    	                    ->join('tbl_user', 'orders.user_id', '=', 'tbl_user.user_id')
-    	                    ->join('user_address','orders.address_id', '=', 'user_address.address_id')
-    	                    ->join('area', 'user_address.area_id','=', 'area.area_id')
+    	                    ->leftJoin('tbl_user', 'orders.user_id', '=', 'tbl_user.user_id')
+    	                    ->leftJoin('user_address','orders.address_id', '=', 'user_address.address_id')
+    	                    ->leftJoin('area', 'user_address.area_id','=', 'area.area_id')
     	                  
-    	                    ->join('vendor', 'orders.vendor_id','=', 'vendor.vendor_id')
+    	                    ->leftJoin('vendor', 'orders.vendor_id','=', 'vendor.vendor_id')
     	                    ->leftJoin('delivery_boy','orders.dboy_id', '=','delivery_boy.delivery_boy_id')
     	                    ->select('area.area_id','orders.order_id','orders.order_id','orders.user_id','orders.delivery_date','orders.order_date','tbl_user.user_name','orders.dboy_id','orders.delivery_charge', 'orders.total_price','orders.total_products_mrp','orders.delivery_charge','delivery_boy.delivery_boy_name','orders.dboy_id','orders.order_status','orders.cart_id','orders.delivery_date','orders.order_date','user_address.user_number','user_address.user_name','user_address.address','orders.time_slot','orders.delivery_charge','orders.paid_by_wallet','orders.rem_price','orders.price_without_delivery','orders.coupon_discount')
     	           
